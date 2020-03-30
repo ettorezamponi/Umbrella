@@ -9,23 +9,29 @@
 import SwiftUI
 
 struct AccountView: View {
+    @EnvironmentObject var session: SessionStore
+    
+    func getUser() {
+        session.listen()
+    }
+    
     var body: some View {
-        VStack{
-            HStack {
-                Text("Login")
-                    .font(.system(size: 55))
-                    .fontWeight(.heavy)
-                    .padding(.leading)
-                
-                Spacer()
+        Group {
+            if (session.session != nil) {
+                Text("Bentornato utente loggato")
+                Button(action: session.signOut) {
+                    Text("Sign Out")
+                }
+            } else {
+                LoginView()
             }
-            Spacer()
-        }
+        }.onAppear(perform: getUser)
+        
     }
 }
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView()
+        AccountView().environmentObject(SessionStore())
     }
 }
