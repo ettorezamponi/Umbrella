@@ -3,19 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9547C493EAB145547C42543B /* Pods_Umbrella.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF0058B0813DC4F093209A0 /* Pods_Umbrella.framework */; };
+		A166CFBE2430B682007E5A89 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A166CFBD2430B682007E5A89 /* SessionStore.swift */; };
 		A18391222403C880001CFC62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18391212403C880001CFC62 /* AppDelegate.swift */; };
 		A18391242403C881001CFC62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18391232403C881001CFC62 /* SceneDelegate.swift */; };
 		A18391262403C881001CFC62 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18391252403C881001CFC62 /* ContentView.swift */; };
 		A18391282403C884001CFC62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A18391272403C884001CFC62 /* Assets.xcassets */; };
 		A183912B2403C884001CFC62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A183912A2403C884001CFC62 /* Preview Assets.xcassets */; };
 		A183912E2403C884001CFC62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A183912C2403C884001CFC62 /* LaunchScreen.storyboard */; };
+		A18391362403C9AB001CFC62 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A18391352403C9AB001CFC62 /* GoogleService-Info.plist */; };
+		A1F44C46242F6C440019EE23 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F44C45242F6C440019EE23 /* Constants.swift */; };
+		A1F44C48242F76570019EE23 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F44C47242F76570019EE23 /* HomeView.swift */; };
+		A1F44C4A242F766A0019EE23 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F44C49242F766A0019EE23 /* SwiftUIView.swift */; };
+		A1F44C4C242F76760019EE23 /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F44C4B242F76760019EE23 /* ReviewsView.swift */; };
+		A1F44C4E242F76890019EE23 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F44C4D242F76890019EE23 /* AccountView.swift */; };
+		A1F44C50242F76C80019EE23 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F44C4F242F76C80019EE23 /* BookingView.swift */; };
+		A1FF194E2430EF0600805816 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF194D2430EF0600805816 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E7FCF181BCCD0EFDB53B0B2 /* Pods-Umbrella.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.debug.xcconfig"; path = "Target Support Files/Pods-Umbrella/Pods-Umbrella.debug.xcconfig"; sourceTree = "<group>"; };
+		A15A02D8243A2F3E0087DE75 /* Umbrella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Umbrella.entitlements; sourceTree = "<group>"; };
+		A166CFBD2430B682007E5A89 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		A183911E2403C880001CFC62 /* Umbrella.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Umbrella.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A18391212403C880001CFC62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A18391232403C881001CFC62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +37,16 @@
 		A183912A2403C884001CFC62 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A183912D2403C884001CFC62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A183912F2403C884001CFC62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A18391352403C9AB001CFC62 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A1F44C45242F6C440019EE23 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A1F44C47242F76570019EE23 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A1F44C49242F766A0019EE23 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		A1F44C4B242F76760019EE23 /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
+		A1F44C4D242F76890019EE23 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		A1F44C4F242F76C80019EE23 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
+		A1FF194D2430EF0600805816 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		ADF0058B0813DC4F093209A0 /* Pods_Umbrella.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Umbrella.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D300B9CB7D172B0A145F1163 /* Pods-Umbrella.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Umbrella.release.xcconfig"; path = "Target Support Files/Pods-Umbrella/Pods-Umbrella.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +54,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9547C493EAB145547C42543B /* Pods_Umbrella.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82D8F32BDA9EB4BC69DB641D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADF0058B0813DC4F093209A0 /* Pods_Umbrella.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A03E134E5B67ED06267A48BA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5E7FCF181BCCD0EFDB53B0B2 /* Pods-Umbrella.debug.xcconfig */,
+				D300B9CB7D172B0A145F1163 /* Pods-Umbrella.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A18391152403C880001CFC62 = {
 			isa = PBXGroup;
 			children = (
 				A18391202403C880001CFC62 /* Umbrella */,
 				A183911F2403C880001CFC62 /* Products */,
+				A03E134E5B67ED06267A48BA /* Pods */,
+				82D8F32BDA9EB4BC69DB641D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,13 +99,23 @@
 		A18391202403C880001CFC62 /* Umbrella */ = {
 			isa = PBXGroup;
 			children = (
+				A15A02D8243A2F3E0087DE75 /* Umbrella.entitlements */,
+				A18391352403C9AB001CFC62 /* GoogleService-Info.plist */,
 				A18391212403C880001CFC62 /* AppDelegate.swift */,
 				A18391232403C881001CFC62 /* SceneDelegate.swift */,
 				A18391252403C881001CFC62 /* ContentView.swift */,
+				A1F44C45242F6C440019EE23 /* Constants.swift */,
+				A1F44C49242F766A0019EE23 /* SwiftUIView.swift */,
 				A18391272403C884001CFC62 /* Assets.xcassets */,
 				A183912C2403C884001CFC62 /* LaunchScreen.storyboard */,
 				A183912F2403C884001CFC62 /* Info.plist */,
 				A18391292403C884001CFC62 /* Preview Content */,
+				A1F44C47242F76570019EE23 /* HomeView.swift */,
+				A1F44C4F242F76C80019EE23 /* BookingView.swift */,
+				A1F44C4B242F76760019EE23 /* ReviewsView.swift */,
+				A1F44C4D242F76890019EE23 /* AccountView.swift */,
+				A166CFBD2430B682007E5A89 /* SessionStore.swift */,
+				A1FF194D2430EF0600805816 /* LoginView.swift */,
 			);
 			path = Umbrella;
 			sourceTree = "<group>";
@@ -82,9 +135,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A18391322403C884001CFC62 /* Build configuration list for PBXNativeTarget "Umbrella" */;
 			buildPhases = (
+				9333C5E46FF72810F407F523 /* [CP] Check Pods Manifest.lock */,
 				A183911A2403C880001CFC62 /* Sources */,
 				A183911B2403C880001CFC62 /* Frameworks */,
 				A183911C2403C880001CFC62 /* Resources */,
+				89EB735C8432B8D8BD0EFC57 /* [CP] Embed Pods Frameworks */,
+				674F079834AB367DD101F2FF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,12 +190,72 @@
 			buildActionMask = 2147483647;
 			files = (
 				A183912E2403C884001CFC62 /* LaunchScreen.storyboard in Resources */,
+				A18391362403C9AB001CFC62 /* GoogleService-Info.plist in Resources */,
 				A183912B2403C884001CFC62 /* Preview Assets.xcassets in Resources */,
 				A18391282403C884001CFC62 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		674F079834AB367DD101F2FF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Umbrella/Pods-Umbrella-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Umbrella/Pods-Umbrella-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Umbrella/Pods-Umbrella-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89EB735C8432B8D8BD0EFC57 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Umbrella/Pods-Umbrella-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9333C5E46FF72810F407F523 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Umbrella-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A183911A2403C880001CFC62 /* Sources */ = {
@@ -148,7 +264,15 @@
 			files = (
 				A18391222403C880001CFC62 /* AppDelegate.swift in Sources */,
 				A18391242403C881001CFC62 /* SceneDelegate.swift in Sources */,
+				A1F44C4A242F766A0019EE23 /* SwiftUIView.swift in Sources */,
+				A1F44C50242F76C80019EE23 /* BookingView.swift in Sources */,
+				A1F44C4C242F76760019EE23 /* ReviewsView.swift in Sources */,
+				A1F44C4E242F76890019EE23 /* AccountView.swift in Sources */,
+				A166CFBE2430B682007E5A89 /* SessionStore.swift in Sources */,
 				A18391262403C881001CFC62 /* ContentView.swift in Sources */,
+				A1FF194E2430EF0600805816 /* LoginView.swift in Sources */,
+				A1F44C48242F76570019EE23 /* HomeView.swift in Sources */,
+				A1F44C46242F6C440019EE23 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,10 +406,14 @@
 		};
 		A18391332403C884001CFC62 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E7FCF181BCCD0EFDB53B0B2 /* Pods-Umbrella.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Umbrella/Umbrella.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Umbrella/Preview Content\"";
+				DEVELOPMENT_TEAM = UXVYL844HU;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Umbrella/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -294,6 +422,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ettore.Umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -301,10 +430,14 @@
 		};
 		A18391342403C884001CFC62 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D300B9CB7D172B0A145F1163 /* Pods-Umbrella.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Umbrella/Umbrella.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Umbrella/Preview Content\"";
+				DEVELOPMENT_TEAM = UXVYL844HU;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Umbrella/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -313,6 +446,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ettore.Umbrella;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
