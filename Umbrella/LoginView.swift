@@ -8,6 +8,7 @@
 
 import SwiftUI
 import FBSDKLoginKit
+import GoogleSignIn
 import Firebase
 
 struct SignInView: View {
@@ -178,33 +179,26 @@ struct LoginView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: SignUpView()) {
-                    HStack(alignment: .center) {
-                        
-                        
-                        Text("Sign up with Apple")
-                            .frame(width: 310, height: 55)
-                            .foregroundColor(.black)
-                            .font(.system(size: 16, weight: .bold))
-                            .background(Color.white)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color.black, lineWidth: 1))
-                        
-                    }
+                HStack(alignment: .center) {
+                    
+                    
+                    Text("Sign up with Apple")
+                        .frame(width: 310, height: 55)
+                        .foregroundColor(.black)
+                        .font(.system(size: 16, weight: .bold))
+                        .background(Color.white)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.black, lineWidth: 1))
+                    
                 }.padding(15)
                 
-                NavigationLink(destination: SignUpView()) {
-                    HStack {
-                        Text("Sign up with Google")
-                            .frame(width: 310, height: 55)
-                            .foregroundColor(.white)
-                            .font(.system(size: 16, weight: .bold))
-                            .background(Color.red)
-                            .cornerRadius(20)
-                        
-                    }
-                }
+                
+                google()
+                    .frame(width: 310, height: 55)
+                    .cornerRadius(20)
+                
+                
                 
                 loginFB()
                     .frame(width: 310, height: 55)
@@ -238,6 +232,19 @@ struct LoginView: View {
                 }
             }.padding([.leading, .bottom, .trailing], 32)
         }
+    }
+}
+
+struct google: UIViewRepresentable {
+    func makeUIView(context: UIViewRepresentableContext<google>) -> GIDSignInButton {
+        let button = GIDSignInButton()
+        button.colorScheme = .dark
+        GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
+        return button
+    }
+    
+    func updateUIView(_ uiView: GIDSignInButton, context: UIViewRepresentableContext<google>) {
+        
     }
 }
 
