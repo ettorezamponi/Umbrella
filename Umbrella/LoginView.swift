@@ -68,19 +68,6 @@ struct SignInView: View {
             }
             Spacer()
             
-            NavigationLink(destination: SignUpView()) {
-                HStack {
-                    Text("I'm a new user")
-                        .font(.system(size: 16, weight: .light))
-                        .foregroundColor(.primary)
-                    
-                    Text("Create an account")
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(Color.blue)
-                    
-                }
-            }
-            
         }.padding(.horizontal, 32)
     }
 }
@@ -138,7 +125,6 @@ struct SignUpView: View {
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(.red)
                     .padding()
-                
             }
             Spacer()
         }.padding(.horizontal, 32)
@@ -181,9 +167,8 @@ struct LoginView: View {
                 
                 HStack(alignment: .center) {
                     
-                    
                     Text("Sign up with Apple")
-                        .frame(width: 310, height: 55)
+                        .frame(width: 310, height: 60)
                         .foregroundColor(.black)
                         .font(.system(size: 16, weight: .bold))
                         .background(Color.white)
@@ -195,14 +180,14 @@ struct LoginView: View {
                 
                 
                 google()
-                    .frame(width: 310, height: 55)
+                    .frame(width: 310, height: 60)
                     .cornerRadius(20)
-                
                 
                 
                 loginFB()
                     .frame(width: 310, height: 55)
                     .cornerRadius(20)
+                    .padding(5)
                 
                 Divider()
                 
@@ -214,9 +199,8 @@ struct LoginView: View {
                             .font(.system(size: 16, weight: .bold))
                             .background(Color.black)
                             .cornerRadius(20)
-                        
                     }
-                }
+                }.padding(5)
                 
                 NavigationLink(destination: SignInView()) {
                     HStack {
@@ -238,7 +222,8 @@ struct LoginView: View {
 struct google: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<google>) -> GIDSignInButton {
         let button = GIDSignInButton()
-        button.colorScheme = .dark
+        button.colorScheme = .light
+        button.style = .wide
         GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
         return button
     }
