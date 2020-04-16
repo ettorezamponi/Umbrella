@@ -18,9 +18,10 @@ struct AccountView: View {
     var body: some View {
         Group {
             if (session.session != nil) {
-                Text("Bentornato utente loggato")
                 Button(action: session.signOut) {
                     Text("Sign Out")
+                        .fontWeight(.heavy)
+                    Text("Ciao ancora di nuovo ancora nduoss")
                 }
             } else {
                 LoginView()

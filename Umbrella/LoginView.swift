@@ -11,6 +11,7 @@ import FBSDKLoginKit
 import GoogleSignIn
 import Firebase
 
+//Login with email
 struct SignInView: View {
     @State var email: String = ""
     @State var password: String = ""
@@ -72,6 +73,7 @@ struct SignInView: View {
     }
 }
 
+//Create account with email
 struct SignUpView: View {
     @State var email: String = ""
     @State var password: String = ""
@@ -134,7 +136,6 @@ struct SignUpView: View {
 struct ChoseMethodView: View {
     var body: some View{
         
-        
         NavigationLink(destination: SignInView()) {
             HStack {
                 Text("Have an account?")
@@ -150,6 +151,7 @@ struct ChoseMethodView: View {
     }
 }
 
+//View
 struct LoginView: View {
     var body: some View {
         NavigationView {
@@ -219,6 +221,7 @@ struct LoginView: View {
     }
 }
 
+//Google Login
 struct google: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<google>) -> GIDSignInButton {
         let button = GIDSignInButton()
@@ -233,6 +236,7 @@ struct google: UIViewRepresentable {
     }
 }
 
+//Facebook Login
 struct loginFB: UIViewRepresentable{
     func makeCoordinator() -> loginFB.Coordinator {
         return loginFB.Coordinator()
