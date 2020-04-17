@@ -75,32 +75,14 @@ struct SignInView: View {
 
 //Create account with email
 struct SignUpView: View {
+    @State var username: String = ""
     @State var email: String = ""
     @State var password: String = ""
     @State var error: String = ""
     @EnvironmentObject var session: SessionStore
-    //per i dati inseriti nel DB
-    @State var username: String = ""
-    
-    //Funzione per aggiungere i dati nel DB
-    func loadData(){
-        let userDictionary = [
-            "name":self.username
-        ]
-        //collection su Firebase si chiamerà "userInfo"
-        let docRef = Firestore.firestore().document("userInfo/\(UUID().uuidString)")
-        print("setting data")
-        docRef.setData(userDictionary){ (error) in
-            if let error = error {
-                print("error = \(error)")
-            } else {
-                print ("data upload successfully")
-            }
-        }
-    }
     
     func signUp() {
-        session.signUp(email: email, password: password) {(result, error) in
+        session.signUp(email: email, password: password) {(profile, error) in
             if let error = error {
                 self.error = error.localizedDescription
             } else {
@@ -108,7 +90,6 @@ struct SignUpView: View {
                 self.password = ""
             }
         }
-        loadData()
     }
     
     var body: some View {
@@ -123,9 +104,9 @@ struct SignUpView: View {
             
             VStack(spacing: 20) {
                 TextField("Username", text: $username)
-                .font(.system(size: 20))
-                .padding(8)
-                .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
+                    .font(.system(size: 20))
+                    .padding(8)
+                    .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
                 
                 TextField("Email address", text: $email)
                     .font(.system(size: 20))
@@ -146,7 +127,7 @@ struct SignUpView: View {
                     .font(.system(size: 16, weight: .bold))
                     .background(Color.black)
                     .cornerRadius(20)
-            }.disabled(username.isEmpty)
+            }
             
             if (error != "") {
                 Text(error)
