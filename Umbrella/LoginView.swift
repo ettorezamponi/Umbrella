@@ -79,6 +79,25 @@ struct SignUpView: View {
     @State var password: String = ""
     @State var error: String = ""
     @EnvironmentObject var session: SessionStore
+    //per i dati inseriti nel DB
+    @State var username: String = ""
+    
+    //Funzione per aggiungere i dati nel DB
+    func loadData(){
+        let userDictionary = [
+            "name":self.username
+        ]
+        //collection su Firebase si chiamerà "userInfo"
+        let docRef = Firestore.firestore().document("userInfo/\(UUID().uuidString)")
+        print("setting data")
+        docRef.setData(userDictionary){ (error) in
+            if let error = error {
+                print("error = \(error)")
+            } else {
+                print ("data upload successfully")
+            }
+        }
+    }
     
     func signUp() {
         session.signUp(email: email, password: password) {(result, error) in
@@ -89,26 +108,33 @@ struct SignUpView: View {
                 self.password = ""
             }
         }
+        loadData()
     }
     
     var body: some View {
         VStack{
             Text("Create an account")
                 .font(.system(size: 40, weight: .heavy))
+                .multilineTextAlignment(.center)
             
             Text("Sign up to get started")
                 .font(.system(size: 25, weight: .medium))
                 .foregroundColor(Color.gray)
             
             VStack(spacing: 20) {
+                TextField("Username", text: $username)
+                .font(.system(size: 20))
+                .padding(8)
+                .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
+                
                 TextField("Email address", text: $email)
                     .font(.system(size: 20))
-                    .padding(12)
+                    .padding(8)
                     .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
                 
                 SecureField("Password", text: $password)
                     .font(.system(size: 20))
-                    .padding(12)
+                    .padding(8)
                     .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
             }.padding(.vertical, 65)
             
@@ -120,7 +146,7 @@ struct SignUpView: View {
                     .font(.system(size: 16, weight: .bold))
                     .background(Color.black)
                     .cornerRadius(20)
-            }
+            }.disabled(username.isEmpty)
             
             if (error != "") {
                 Text(error)
