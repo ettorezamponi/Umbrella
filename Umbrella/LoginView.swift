@@ -80,12 +80,16 @@ struct SignUpView: View {
     @State var error: String = ""
     @EnvironmentObject var session: SessionStore
     //per i dati inseriti nel DB
+    @State var picker = false
+    @State var loading = false
+    @State var imagedata : Data = .init(count: 0)
     @State var username: String = ""
+    
     
     //Funzione per aggiungere i dati nel DB
     func loadData(){
         let userDictionary = [
-            "name":self.username
+            "username":self.username
         ]
         //collection su Firebase si chiamerà "userInfo"
         let docRef = Firestore.firestore().document("userInfo/\(UUID().uuidString)")
@@ -96,6 +100,29 @@ struct SignUpView: View {
             } else {
                 print ("data upload successfully")
             }
+        }
+    }
+    
+    func CreateUserDB () {
+        let db = Firestore.firestore()
+        let storage = Storage.storage().reference()
+        let uid = Auth.auth().currentUser?.uid
+        
+        
+    }
+    
+    struct Indicator : UIViewRepresentable {
+        
+        func makeUIView(context: UIViewRepresentableContext<Indicator>) -> UIActivityIndicatorView {
+            
+            let indicator = UIActivityIndicatorView(style: .large)
+            indicator.startAnimating()
+            return indicator
+        }
+        
+        func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<Indicator>) {
+            
+            
         }
     }
     
@@ -121,6 +148,15 @@ struct SignUpView: View {
                 .foregroundColor(Color.gray)
             
             VStack(spacing: 20) {
+                Button(action: {self.picker.toggle() }) {
+                    if self.imagedata.count == 0{
+                        Image(systemName: "person.crop.circle.badge.plus").resizable().frame(width: 90, height: 70).foregroundColor(.gray)
+                    }
+                    else{
+                        Image(uiImage: UIImage(data: self.imagedata)!).resizable().renderingMode(.original).frame(width: 90, height: 90).clipShape(Circle())
+                    }
+                }
+                
                 TextField("Username", text: $username)
                     .font(.system(size: 20))
                     .padding(8)
@@ -136,6 +172,9 @@ struct SignUpView: View {
                     .padding(8)
                     .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
             }.padding(.vertical, 65)
+            .sheet(isPresented: self.$picker, content: {
+                ImagePicker(picker: self.$picker, imagedata: self.$imagedata)
+            })
             
             Button(action: signUp) {
                 Text("Create Account")
@@ -299,6 +338,43 @@ struct loginFB: UIViewRepresentable{
         
         func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
             try! Auth.auth().signOut()
+        }
+    }
+}
+
+//Funzione per scegliere l'immagine da uploadare
+struct ImagePicker : UIViewControllerRepresentable {
+    @Binding var picker : Bool
+    @Binding var imagedata : Data
+
+    func makeCoordinator() -> ImagePicker.Coordinator {
+        return ImagePicker.Coordinator(parent1: self)
+    }
+    
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = context.coordinator
+        return picker
+    }
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) { }
+    
+    class Coordinator : NSObject,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+        var parent : ImagePicker
+        init(parent1 : ImagePicker) {
+            parent = parent1
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            self.parent.picker.toggle()
+        }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            let image = info[.originalImage] as! UIImage
+            let data = image.jpegData(compressionQuality: 0.45)
+            self.parent.imagedata = data!
+            self.parent.picker.toggle()
         }
     }
 }
