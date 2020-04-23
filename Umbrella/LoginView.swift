@@ -10,6 +10,7 @@ import SwiftUI
 import FBSDKLoginKit
 import GoogleSignIn
 import Firebase
+import FirebaseStorage
 
 //Login with email
 struct SignInView: View {
@@ -80,6 +81,7 @@ struct SignUpView: View {
     @State var error: String = ""
     @EnvironmentObject var session: SessionStore
     //per i dati inseriti nel DB
+    @State var alert = false
     @State var picker = false
     @State var loading = false
     @State var imagedata : Data = .init(count: 0)
@@ -103,27 +105,41 @@ struct SignUpView: View {
         }
     }
     
-    func CreateUserDB () {
+    func CreateUserDB (username: String, imagedata: Data) {
         let db = Firestore.firestore()
         let storage = Storage.storage().reference()
         let uid = Auth.auth().currentUser?.uid
         
-        
+        //problemi con l'unwrapping perchè uid risulta uguale a nil
+        storage.child("profilepics").child(uid ?? "no UID").putData(imagedata, metadata: nil) { (_, err) in
+            if err != nil{
+                print((err?.localizedDescription)!)
+                return
+            }
+            storage.child("profilepics").child(uid ?? "no UID").downloadURL { (url, err) in
+                if err != nil{
+                    print((err?.localizedDescription)!)
+                    return
+                }
+                db.collection("users").document(uid ?? "no UID").setData(["username": username, "image":"\(url!)", "uid": uid ?? "no uid avaiable"]) { (err) in
+                    if err != nil{
+                        print((err?.localizedDescription)!)
+                        return
+                    }
+                }
+            }
+        }
     }
     
+    //struttura per gestire la scelta dell'immagine da uploadare
     struct Indicator : UIViewRepresentable {
-        
         func makeUIView(context: UIViewRepresentableContext<Indicator>) -> UIActivityIndicatorView {
-            
             let indicator = UIActivityIndicatorView(style: .large)
             indicator.startAnimating()
             return indicator
         }
         
-        func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<Indicator>) {
-            
-            
-        }
+        func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<Indicator>) { }
     }
     
     func signUp() {
@@ -135,7 +151,7 @@ struct SignUpView: View {
                 self.password = ""
             }
         }
-        loadData()
+        CreateUserDB(username: self.username, imagedata: self.imagedata)
     }
     
     var body: some View {
