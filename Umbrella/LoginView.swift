@@ -151,7 +151,6 @@ struct SignUpView: View {
                 self.password = ""
             }
         }
-        CreateUserDB(username: self.username, imagedata: self.imagedata)
     }
     
     var body: some View {
@@ -164,19 +163,6 @@ struct SignUpView: View {
                 .foregroundColor(Color.gray)
             
             VStack(spacing: 20) {
-                Button(action: {self.picker.toggle() }) {
-                    if self.imagedata.count == 0{
-                        Image(systemName: "person.crop.circle.badge.plus").resizable().frame(width: 90, height: 70).foregroundColor(.gray)
-                    }
-                    else{
-                        Image(uiImage: UIImage(data: self.imagedata)!).resizable().renderingMode(.original).frame(width: 90, height: 90).clipShape(Circle())
-                    }
-                }
-                
-                TextField("Username", text: $username)
-                    .font(.system(size: 20))
-                    .padding(8)
-                    .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
                 
                 TextField("Email address", text: $email)
                     .font(.system(size: 20))
@@ -200,7 +186,7 @@ struct SignUpView: View {
                     .font(.system(size: 16, weight: .bold))
                     .background(Color.black)
                     .cornerRadius(20)
-            }.disabled(username.isEmpty || email.isEmpty || password.isEmpty)
+            }.disabled(email.isEmpty || password.isEmpty)
             
             if (error != "") {
                 Text(error)

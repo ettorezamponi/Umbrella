@@ -34,7 +34,6 @@ struct HomeView: View {
                     .fontWeight(.bold)
                     .frame(width:300, height: 150)
                 
-                
             }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
                 .cornerRadius(30)
             
