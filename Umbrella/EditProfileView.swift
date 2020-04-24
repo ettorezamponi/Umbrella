@@ -116,7 +116,7 @@ struct EditProfileView: View {
                     Image(systemName: "person.crop.circle.badge.plus").resizable().frame(width: 150, height: 120).foregroundColor(.gray)
                 }
                 else{
-                    Image(uiImage: UIImage(data: self.imagedata)!).resizable().renderingMode(.original).frame(width: 140, height: 140).clipShape(Circle())
+                    Image(uiImage: UIImage(data: self.imagedata)!).resizable().renderingMode(.original).frame(width: 100, height: 150).clipShape(Circle())
                 }
             }.padding(30)
             VStack{

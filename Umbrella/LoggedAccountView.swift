@@ -14,26 +14,25 @@ struct LoggedAccountView: View {
     
     var body: some View {
         VStack{
-            
-            HStack(alignment: .center) {
-                Image(systemName: Constants.accountImageAbsent)
-                    .padding(.leading)
-                    .frame(width: 60, height: 60)
-                    .font(.system(size: 50))
-                VStack{
-                    Text ("Ciao, \((session.session?.email)!)")
+            VStack{
+                HStack(alignment: .center) {
+                    Image(systemName: Constants.accountImageAbsent)
+                        .padding(.leading)
+                        .frame(width: 60, height: 60)
+                        .font(.system(size: 50))
+                    
+                    Text ("Ciao, \((session.session?.email ?? "inserisci il tuo username"))")
                         .font(.system(size: 25))
                         .fontWeight(.bold)
                         .frame(width:300, height: 150)
-                    
                 }
+                Button("Edit info") {
+                    self.isModal = true
+                }.sheet(isPresented: $isModal, content: {
+                    EditProfileView()
+                })
             }
             
-            Button("Edit info") {
-                self.isModal = true
-            }.sheet(isPresented: $isModal, content: {
-                EditProfileView()
-            })
             
             HStack(alignment: .center) {
                 VStack{
@@ -74,6 +73,7 @@ struct LoggedAccountView: View {
                             .stroke(Color.black, lineWidth: 1))
                 
             }
+            .padding(.bottom, 10.0)
         }
     }
 }
