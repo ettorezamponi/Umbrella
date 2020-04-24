@@ -7,57 +7,71 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseStorage
 
 struct LoggedAccountView: View {
     @EnvironmentObject var session: SessionStore
     @State var isModal: Bool = false
     
+    
     var body: some View {
         VStack{
-            VStack{
+            
+            VStack(alignment: .center){
                 HStack(alignment: .center) {
                     Image(systemName: Constants.accountImageAbsent)
                         .padding(.leading)
                         .frame(width: 60, height: 60)
                         .font(.system(size: 50))
                     
-                    Text ("Ciao, \((session.session?.email ?? "inserisci il tuo username"))")
+                    Text ("Bentornato, \((session.session?.email ?? "inserisci il tuo username"))")
                         .font(.system(size: 25))
                         .fontWeight(.bold)
-                        .frame(width:300, height: 150)
+                        .frame(width:250, height: 60)
                 }
+                
                 Button("Edit info") {
                     self.isModal = true
                 }.sheet(isPresented: $isModal, content: {
                     EditProfileView()
-                })
+                }).foregroundColor(Color.blue)
             }
+            .padding(.top, 20.0)
             
+            Spacer()
             
-            HStack(alignment: .center) {
+            VStack{
                 VStack{
                     Text ("Booking")
                         .font(.system(size: 22))
-                        .fontWeight(.bold)
-                        .frame(width:300, height: 150)
+                        .fontWeight(.semibold)
+                        .padding(.leading)
                     
                     Text("Prenotazione dal 12/7 al 16/7")
                         .font(.system(size: 15))
                 }
-            }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
-                .cornerRadius(30)
-            
-            HStack(alignment: .center) {
+                    .frame(width:365, height: 100)
+                .padding(.bottom, 30.0)
+                .background(Color(red: 0.63, green: 0.81, blue: 0.96))
+                .cornerRadius(20)
+                
+                
                 VStack{
                     Text("Reviews")
                         .font(.system(size: 22))
-                        .fontWeight(.bold)
-                        .frame(width:300, height: 150)
+                        .fontWeight(.semibold)
+                        .frame(height: 100)
                     
                     Text("Stabilimento molto pulito e tenuto maniacalmente. Un paradiso per i bagnanti. Tornerò presto a trovarvi, servizio super gentile ed ecuato")
                         .font(.system(size: 15))
                 }
-            }.background(Color.yellow).cornerRadius(30)
+                .padding(.bottom, 30.0)
+                .padding(.horizontal, 10.0)
+                .background(Color.yellow)
+                .cornerRadius(20)
+                
+            }
             
             Spacer()
             

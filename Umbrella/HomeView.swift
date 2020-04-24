@@ -11,7 +11,10 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var session: SessionStore
     
+    
     var body: some View {
+        
+        
         VStack {
             
             HStack {
