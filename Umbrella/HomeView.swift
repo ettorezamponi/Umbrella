@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var session: SessionStore
+    
     var body: some View {
         VStack {
             
@@ -27,8 +29,8 @@ struct HomeView: View {
                     .frame(width: 60, height: 60)
                     .font(.system(size: 50))
                 
-                Text ("Ciao, @username")
-                    .font(.system(size: 30))
+                Text ("Ciao, \(session.session?.email ?? "log in to insert your info")")
+                    .font(.system(size: 25))
                     .fontWeight(.bold)
                     .frame(width:300, height: 150)
                 

@@ -187,7 +187,7 @@ struct SignUpView: View {
                     .font(.system(size: 20))
                     .padding(8)
                     .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
-            }.padding(.vertical, 65)
+            }.padding(.vertical, 30)
             .sheet(isPresented: self.$picker, content: {
                 ImagePicker(picker: self.$picker, imagedata: self.$imagedata)
             })
@@ -241,14 +241,12 @@ struct LoginView: View {
                         .font(.system(size: 55))
                         .fontWeight(.heavy)
                         .padding(.leading)
-                    
                     Spacer()
                 }
-                
+
                 Spacer()
                 
                 HStack(alignment: .center) {
-                    
                     Text("Sign up with Apple")
                         .frame(width: 310, height: 60)
                         .foregroundColor(.black)
@@ -260,11 +258,9 @@ struct LoginView: View {
                     
                 }.padding(15)
                 
-                
                 google()
                     .frame(width: 310, height: 60)
                     .cornerRadius(20)
-                
                 
                 loginFB()
                     .frame(width: 310, height: 55)
