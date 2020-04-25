@@ -7,13 +7,14 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
+import Firebase
 
 struct HomeView: View {
     @EnvironmentObject var session: SessionStore
-    
+    @State var url = ""
     
     var body: some View {
-        
         
         VStack {
             
@@ -27,10 +28,17 @@ struct HomeView: View {
             }
             
             HStack(alignment: .center) {
-                Image(systemName: Constants.accountImageAbsent)
-                    .padding(.leading)
-                    .frame(width: 60, height: 60)
-                    .font(.system(size: 50))
+
+                if (session.session?.email == nil) {
+                    Image(systemName: Constants.accountImageAbsent)
+                        .padding(.leading)
+                        .frame(width: 60, height: 60)
+                        .font(.system(size: 50))
+                } else if (url != "") {
+                    AnimatedImage(url: URL(string: url)).resizable().frame(width: 100, height: 150).clipShape(Circle())
+                } else {
+                    Loader()
+                }
                 
                 Text ("Ciao, \(session.session?.email ?? "log in to insert your info")")
                     .font(.system(size: 25))
@@ -38,7 +46,8 @@ struct HomeView: View {
                     .frame(width:300, height: 150)
                 
             }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
-                .cornerRadius(30)
+                .cornerRadius(30).frame(width: 50)
+                
             
             HStack {
                 VStack{
@@ -78,7 +87,29 @@ struct HomeView: View {
                 
             }
             
+        }.onAppear(){
+            let uid = Auth.auth().currentUser?.uid
+            let storage = Storage.storage().reference()
+            
+            storage.child("profilepics").child(uid!).downloadURL { (url, err) in
+                if err != nil {
+                    print((err?.localizedDescription)!)
+                    return
+                }
+                self.url = "\(url!)"
+            }
         }
+    }
+}
+
+struct Loader : UIViewRepresentable {
+    func makeUIView(context: UIViewRepresentableContext<Loader>) -> UIActivityIndicatorView {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.startAnimating()
+        return indicator
+    }
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<Loader>) {
+        
     }
 }
 
