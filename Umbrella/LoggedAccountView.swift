@@ -9,21 +9,19 @@
 import SwiftUI
 import Firebase
 import FirebaseStorage
+import SDWebImageSwiftUI
 
 struct LoggedAccountView: View {
     @EnvironmentObject var session: SessionStore
     @State var isModal: Bool = false
-    
+    @State var url = ""
     
     var body: some View {
         VStack{
-            
             VStack(alignment: .center){
                 HStack(alignment: .center) {
-                    Image(systemName: Constants.accountImageAbsent)
-                        .padding(.leading)
-                        .frame(width: 60, height: 60)
-                        .font(.system(size: 50))
+                    
+                    AnimatedImage(url: URL(string: url)).resizable().frame(width: 100, height: 150).clipShape(Circle())
                     
                     Text ("Bentornato, \((session.session?.email ?? "inserisci il tuo username"))")
                         .font(.system(size: 25))
@@ -36,8 +34,20 @@ struct LoggedAccountView: View {
                 }.sheet(isPresented: $isModal, content: {
                     EditProfileView()
                 }).foregroundColor(Color.blue)
-            }
+                }
             .padding(.top, 20.0)
+            .onAppear(){
+                let uid = Auth.auth().currentUser?.uid
+                let storage = Storage.storage().reference()
+                
+                storage.child("profilepics").child(uid!).downloadURL { (url, err) in
+                    if err != nil {
+                        print((err?.localizedDescription)!)
+                        return
+                    }
+                    self.url = "\(url!)"
+                }
+            }
             
             Spacer()
             
