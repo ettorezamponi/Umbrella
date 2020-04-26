@@ -15,15 +15,18 @@ struct LoggedAccountView: View {
     @EnvironmentObject var session: SessionStore
     @State var isModal: Bool = false
     @State var url = ""
+    @State var username = ""
     
     var body: some View {
         VStack{
             VStack(alignment: .center){
                 HStack(alignment: .center) {
                     
+                    //Image(systemName: Constants.accountImageAbsent).padding(.leading)
+                    
                     AnimatedImage(url: URL(string: url)).resizable().frame(width: 100, height: 150).clipShape(Circle())
                     
-                    Text ("Bentornato, \((session.session?.email ?? "inserisci il tuo username"))")
+                    Text ("Bentornato \(username)")
                         .font(.system(size: 25))
                         .fontWeight(.bold)
                         .frame(width:250, height: 60)
@@ -31,21 +34,32 @@ struct LoggedAccountView: View {
                 
                 Button("Edit info") {
                     self.isModal = true
-                }.sheet(isPresented: $isModal, content: {
-                    EditProfileView()
-                }).foregroundColor(Color.blue)
+                    }.sheet(isPresented: $isModal, content: {
+                        EditProfileView()
+                    }).foregroundColor(Color.blue)
                 }
             .padding(.top, 20.0)
             .onAppear(){
                 let uid = Auth.auth().currentUser?.uid
                 let storage = Storage.storage().reference()
+                let db = Firestore.firestore()
                 
                 storage.child("profilepics").child(uid!).downloadURL { (url, err) in
                     if err != nil {
                         print((err?.localizedDescription)!)
                         return
                     }
+                    //controllo da implementare se visualizzare l'immagine di default per l'utente
                     self.url = "\(url!)"
+                }
+                
+                db.collection("users").document(uid!).getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        let property = document.get("username")
+                        self.username = property as! String
+                    } else {
+                        print("Document does not exist")
+                    }
                 }
             }
             

@@ -13,6 +13,7 @@ import Firebase
 struct HomeView: View {
     @EnvironmentObject var session: SessionStore
     @State var url = ""
+    @State var username = ""
     
     var body: some View {
         
@@ -23,31 +24,49 @@ struct HomeView: View {
                     .font(.system(size: 55))
                     .fontWeight(.heavy)
                     .padding(.leading)
-                    
+                
                 Spacer()
             }
             
-            HStack(alignment: .center) {
-
-                if (session.session?.email == nil) {
+            if (session.session?.email == nil) {
+                HStack(alignment: .center) {
                     Image(systemName: Constants.accountImageAbsent)
                         .padding(.leading)
                         .frame(width: 60, height: 60)
                         .font(.system(size: 50))
-                } else if (url != "") {
+                    
+                    Text ("Accedi o registrati nella sezione account per avere tutte le funzionalità di questa app")
+                        .font(.system(size: 25))
+                        .fontWeight(.bold)
+                        .frame(width:300, height: 150)
+                    
+                }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
+                    .cornerRadius(30).frame(width: 50)
+                
+            } else if (url != "") {
+                HStack(alignment: .center) {
                     AnimatedImage(url: URL(string: url)).resizable().frame(width: 100, height: 150).clipShape(Circle())
-                } else {
+                    
+                    Text ("Bentornato, \(username)")
+                        .font(.system(size: 25))
+                        .fontWeight(.bold)
+                        .frame(width:300, height: 150)
+                    
+                }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
+                    .cornerRadius(30).frame(width: 50)
+                
+            } else {
+                HStack(alignment: .center) {
                     Loader()
-                }
-                
-                Text ("Ciao, \(session.session?.email ?? "log in to insert your info")")
-                    .font(.system(size: 25))
-                    .fontWeight(.bold)
-                    .frame(width:300, height: 150)
-                
-            }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
-                .cornerRadius(30).frame(width: 50)
-                
+                    
+                    Text ("Bentornato, \(username)")
+                        .font(.system(size: 25))
+                        .fontWeight(.bold)
+                        .frame(width:300, height: 150)
+                    
+                }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
+                    .cornerRadius(30).frame(width: 50)
+            }
             
             HStack {
                 VStack{
@@ -86,17 +105,30 @@ struct HomeView: View {
                 }.background(Color.green).cornerRadius(30)
                 
             }
-            
-        }.onAppear(){
+        }
+        .onAppear(){
             let uid = Auth.auth().currentUser?.uid
             let storage = Storage.storage().reference()
+            let db = Firestore.firestore()
             
-            storage.child("profilepics").child(uid!).downloadURL { (url, err) in
-                if err != nil {
-                    print((err?.localizedDescription)!)
-                    return
+            if (uid != nil) {
+                storage.child("profilepics").child(uid!).downloadURL { (url, err) in
+                    if err != nil {
+                        print((err?.localizedDescription)!)
+                        return
+                    }
+                    self.url = "\(url!)"
                 }
-                self.url = "\(url!)"
+                db.collection("users").document(uid!).getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        let property = document.get("username")
+                        self.username = property as! String
+                    } else {
+                        print("Document does not exist")
+                    }
+                }
+            } else {
+                return
             }
         }
     }
