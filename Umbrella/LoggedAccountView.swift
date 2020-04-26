@@ -22,14 +22,27 @@ struct LoggedAccountView: View {
             VStack(alignment: .center){
                 HStack(alignment: .center) {
                     
-                    //Image(systemName: Constants.accountImageAbsent).padding(.leading)
+                    if url.count < 6 {
+                        Image(systemName: Constants.accountImageAbsent)
+                        .padding(.leading)
+                        .frame(width: 60, height: 60)
+                        .font(.system(size: 50))
+                        
+                    } else {
+                        AnimatedImage(url: URL(string: url)).resizable().frame(width: 100, height: 150).clipShape(Circle())
+                    }
                     
-                    AnimatedImage(url: URL(string: url)).resizable().frame(width: 100, height: 150).clipShape(Circle())
-                    
-                    Text ("Bentornato \(username)")
+                    if username.count > 0 {
+                        Text ("Welcome back \(username)")
+                            .font(.system(size: 25))
+                            .fontWeight(.bold)
+                            .frame(width:250, height: 60)
+                    } else {
+                        Text ("Welcome, tell us more about you")
                         .font(.system(size: 25))
                         .fontWeight(.bold)
                         .frame(width:250, height: 60)
+                    }
                 }
                 
                 Button("Edit info") {

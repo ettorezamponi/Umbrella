@@ -22,6 +22,8 @@ struct EditProfileView: View {
     @State var done = false
     @State var imagedata : Data = .init(count: 0)
     @Environment(\.presentationMode) var presentationMode
+    //to show fields during typing
+    
     
     func CreateUserDB (username: String, name:String, surname:String, imagedata: Data) {
         let db = Firestore.firestore()
@@ -161,6 +163,8 @@ struct EditProfileView: View {
             })
     }
 }
+
+
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {

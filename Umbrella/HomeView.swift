@@ -56,10 +56,11 @@ struct HomeView: View {
                     .cornerRadius(30).frame(width: 50)
                 
             } else {
+                //logged but without info
                 HStack(alignment: .center) {
                     Loader()
                     
-                    Text ("Bentornato, \(username)")
+                    Text ("Tell us more about you in the account section")
                         .font(.system(size: 25))
                         .fontWeight(.bold)
                         .frame(width:300, height: 150)
