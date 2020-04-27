@@ -14,6 +14,7 @@ struct HomeView: View {
     @EnvironmentObject var session: SessionStore
     @State var url = ""
     @State var username = ""
+    @State var receipe = ""
     //per il meteo
     @State private var selected = 0
     @ObservedObject var weather = CurrentWeatherViewModel()
@@ -43,8 +44,8 @@ struct HomeView: View {
                         .fontWeight(.bold)
                         .frame(width:300, height: 150)
                     
-                }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
-                    .cornerRadius(30).frame(width: 50)
+                }.background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                .cornerRadius(30).frame(width: 50)
                 
             } else if (url != "") {
                 HStack(alignment: .center) {
@@ -61,7 +62,7 @@ struct HomeView: View {
             } else {
                 //logged but without info
                 HStack(alignment: .center) {
-                    Loader()
+                    //Loader()
                     
                     Text ("Tell us more about you in the account section")
                         .font(.system(size: 25))
@@ -78,14 +79,14 @@ struct HomeView: View {
                         GeometryReader { gr in
                             CurrentWeather(weather: self.weather.current, height: self.selected == 0 ? gr.size.height: gr.size.height * 0.50).animation(.easeInOut(duration: 0.5))
                         }
-                        VStack {
-                            Picker ("", selection: $selected) {
-                                Text("Today")
-                                .tag(0)
-                                Text("Week")
-                                .tag(1)
-                            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
-                        }
+//                        VStack {
+//                            Picker ("", selection: $selected) {
+//                                Text("Today")
+//                                .tag(0)
+//                                Text("Week")
+//                                .tag(1)
+//                            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
+//                        }
                     }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity).cornerRadius(30)
                     
                     VStack{
@@ -106,9 +107,20 @@ struct HomeView: View {
                         .frame(width: 60, height: 60)
                         .font(.system(size: 50))
                     
-                    Text ("il menu del giorno propone: spaghetti alle vongole, arrosto misto alla brace")
+                    if (receipe.count > 5) {
+                        
+                        Text ("\(receipe)")
+                        .font(.headline)
+                        .frame(width: 150)
+                        .font(.system(size: 20))
+                        .frame(width:175, height:330)
+                        
+                    } else {
+                        
+                    Text ("Menu non ancora aggiornato!")
                         .font(.headline)
                         .frame(width:175, height:330)
+                    }
                 }.background(Color.green).cornerRadius(30)
                 
             }
@@ -117,6 +129,11 @@ struct HomeView: View {
             let uid = Auth.auth().currentUser?.uid
             let storage = Storage.storage().reference()
             let db = Firestore.firestore()
+            //get week day
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE"
+            let dayInWeek = dateFormatter.string(from: date)
             
             if (uid != nil) {
                 storage.child("profilepics").child(uid!).downloadURL { (url, err) in
@@ -134,7 +151,24 @@ struct HomeView: View {
                         print("Document does not exist")
                     }
                 }
+                db.collection("restaurants").document(dayInWeek).getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        let prop = document.get("receipe")
+                        self.receipe = prop as! String
+                    } else {
+                        print("Document does not exist")
+                    }
+                }
             } else {
+                
+                db.collection("restaurants").document(dayInWeek).getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        let prop = document.get("receipe")
+                        self.receipe = prop as! String
+                    } else {
+                        print("Document does not exist")
+                    }
+                }
                 return
             }
         }
