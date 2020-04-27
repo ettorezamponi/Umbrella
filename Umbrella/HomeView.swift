@@ -14,6 +14,9 @@ struct HomeView: View {
     @EnvironmentObject var session: SessionStore
     @State var url = ""
     @State var username = ""
+    //per il meteo
+    @State private var selected = 0
+    @ObservedObject var weather = CurrentWeatherViewModel()
     
     var body: some View {
         
@@ -72,15 +75,18 @@ struct HomeView: View {
             HStack {
                 VStack{
                     VStack{
-                        Image(systemName: Constants.sunTry)
-                            .padding(.top, 30.0)
-                            .frame(width: 60, height: 60)
-                            .font(.system(size: 50))
-                        
-                        Text ("bella giornata!")
-                            .font(.headline)
-                            .frame(width:175, height:125)
-                    }.background(Color.orange).cornerRadius(30)
+                        GeometryReader { gr in
+                            CurrentWeather(weather: self.weather.current, height: self.selected == 0 ? gr.size.height: gr.size.height * 0.50).animation(.easeInOut(duration: 0.5))
+                        }
+//                        VStack {
+//                            Picker ("", selection: $selected) {
+//                                Text("Today")
+//                                .tag(0)
+//                                Text("Week")
+//                                .tag(1)
+//                            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
+//                        }
+                    }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity).cornerRadius(30)
                     
                     VStack{
                         Image(systemName: Constants.positionImage)
