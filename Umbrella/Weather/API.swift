@@ -42,16 +42,27 @@ class API {
             }
         }.resume()
     }
-}
-
-extension URL {
-    func withQueries (_ queries: [String: String]) -> URL? {
-        guard var component = URLComponents(url: self, resolvingAgainstBaseURL: true)
-            else {
-                fatalError()
-        }
-        component.queryItems = queries.map { URLQueryItem(name: $0.key, value: $0.value) }
-        return component.url
-    }
+//
+//    class func  weeklyWeather (_ city: String, onSuccess: @escaping (WeeklyWeather)->Void) {
+//        //make sure i have all the info to fetch data
+//        let query = ["q": "\(city)", "appid": appid, "units": "Metric", "cnt": "4"]
+//
+//        guard let url = baseUrlForWeeklyWeather.withQueries(query)
+//            else {
+//                fatalError()
+//        }
+//        URLSession.shared.dataTask(with: url) { (data, res, err) in
+//            guard let data = data, err == nil
+//                else { fatalError(err!.localizedDescription) }
+//            do {
+//                let weather = try decoder.decode(WeeklyWeather.self, from: data)
+//                DispatchQueue.main.async {
+//                    onSuccess(weather)
+//                }
+//            } catch {
+//                fatalError(error.localizedDescription)
+//            }
+//        }.resume()
+//    }
 }
 

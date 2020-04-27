@@ -31,8 +31,9 @@ struct CurrentWeather: View {
                 .font(.body)
             
             Text("\(weather?.main.tempMax.round ?? 0)")
-            .foregroundColor(.white)
-            .font(.body)
+                .foregroundColor(.white)
+                .font(.body)
+            
         }.frame(width: height, height: height)
             .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing))
     }
