@@ -90,15 +90,16 @@ struct HomeView: View {
                     }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity).cornerRadius(30)
                     
                     VStack{
-                        Image(systemName: Constants.positionImage)
-                            .padding(.top, 30.0)
-                            .frame(width: 60, height: 60)
-                            .font(.system(size: 50))
-                        
-                        Text ("ecco le indicazioni!")
-                            .font(.headline)
-                            .frame(width:175, height:125)
-                    }.background(Color.yellow).cornerRadius(30)
+                        Maps()
+//                        Image(systemName: Constants.positionImage)
+//                            .padding(.top, 30.0)
+//                            .frame(width: 60, height: 60)
+//                            .font(.system(size: 50))
+//
+//                        Text ("ecco le indicazioni!")
+//                            .font(.headline)
+//                            .frame(width:175, height:125)
+                    }.cornerRadius(30)
                 }
                 
                 VStack{

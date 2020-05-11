@@ -25,7 +25,7 @@ struct ContentView: View {
                 Text("\(Constants.TabBarText.tabBar0)")
             }).tag(0)
             
-            ProvaView().tabItem({
+            Maps().tabItem({
                 Image(systemName: Constants.TabBarImage.tabBar1)
                     .font(.title)
                 Text("\(Constants.TabBarText.tabBar1)")
