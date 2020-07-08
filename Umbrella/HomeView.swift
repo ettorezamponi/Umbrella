@@ -25,7 +25,7 @@ struct HomeView: View {
             
             HStack {
                 Text("Hello!")
-                    .font(.system(size: 55))
+                    .font(.system(size: 45))
                     .fontWeight(.heavy)
                     .padding(.leading)
                 

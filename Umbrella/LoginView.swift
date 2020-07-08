@@ -224,7 +224,7 @@ struct LoginView: View {
             VStack{
                 HStack {
                     Text("Login!")
-                        .font(.system(size: 55))
+                        .font(.system(size: 45))
                         .fontWeight(.heavy)
                         .padding(.leading)
                     Spacer()
