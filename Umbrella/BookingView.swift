@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseStorage
 
 struct BookingView : View {
     @State var isModal: Bool = false

@@ -3,4 +3,54 @@
    uuid = "8B8136BD-0CE7-48A0-ACB1-76AAA0DDCDB4"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A307E4A2-20B4-4F75-9144-CB7C62905F86"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Umbrella/Booking/TheatreView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "createBackRows()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A307E4A2-20B4-4F75-9144-CB7C62905F86 - c2f561f2aee4d971"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int) -&gt; Umbrella.ChairView in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Range&lt;Swift.Int&gt;, Swift.Int, Umbrella.ChairView&gt; in closure #1 (Swift.Int) -&gt; SwiftUI.HStack&lt;SwiftUI.ForEach&lt;Swift.Range&lt;Swift.Int&gt;, Swift.Int, Umbrella.ChairView&gt;&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Range&lt;Swift.Int&gt;, Swift.Int, SwiftUI.HStack&lt;SwiftUI.ForEach&lt;Swift.Range&lt;Swift.Int&gt;, Swift.Int, Umbrella.ChairView&gt;&gt;&gt; in Umbrella.TheatreView.(createFrontRows in _046EE5399EDB4DBCAF70106B84736A76)() -&gt; some"
+                  moduleName = "Umbrella"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ettorezamponi/Desktop/Umbrella/Umbrella/Booking/TheatreView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  uuid = "A307E4A2-20B4-4F75-9144-CB7C62905F86 - fd848f74120772de"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Umbrella.Seat) -&gt; () in closure #1 (Swift.Int) -&gt; Umbrella.ChairView in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Range&lt;Swift.Int&gt;, Swift.Int, Umbrella.ChairView&gt; in closure #1 (Swift.Int) -&gt; SwiftUI.HStack&lt;SwiftUI.ForEach&lt;Swift.Range&lt;Swift.Int&gt;, Swift.Int, Umbrella.ChairView&gt;&gt; in closure #1 () -&gt; SwiftUI.ForEach&lt;Swift.Range&lt;Swift.Int&gt;, Swift.Int, SwiftUI.HStack&lt;SwiftUI.ForEach&lt;Swift.Range&lt;Swift.Int&gt;, Swift.Int, Umbrella.ChairView&gt;&gt;&gt; in Umbrella.TheatreView.(createFrontRows in _046EE5399EDB4DBCAF70106B84736A76)() -&gt; some"
+                  moduleName = "Umbrella"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ettorezamponi/Desktop/Umbrella/Umbrella/Booking/TheatreView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "116">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

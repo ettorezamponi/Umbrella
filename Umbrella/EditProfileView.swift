@@ -121,6 +121,7 @@ struct EditProfileView: View {
                     Image(uiImage: UIImage(data: self.imagedata)!).resizable().renderingMode(.original).frame(width: 100, height: 150).clipShape(Circle())
                 }
             }.padding(30)
+            
             VStack{
                 TextField("Username", text: $username)
                     .font(.system(size: 20))
@@ -137,6 +138,7 @@ struct EditProfileView: View {
                     .padding(8)
                     .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
             }
+            
             Spacer()
             
             Button(action: upload){

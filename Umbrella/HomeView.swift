@@ -100,7 +100,7 @@ struct HomeView: View {
 //                            .font(.headline)
 //                            .frame(width:175, height:125)
                     }.cornerRadius(30)
-                }
+                }.padding(.horizontal, 8)
                 
                 VStack{
                     Image(systemName: Constants.forkImage)
@@ -112,17 +112,17 @@ struct HomeView: View {
                         
                         Text ("\(receipe)")
                         .font(.headline)
-                        .frame(width: 150)
                         .font(.system(size: 20))
-                        .frame(width:175, height:330)
+                        .frame(width:175, height:360)
                         
                     } else {
                         
                     Text ("Menu non ancora aggiornato!")
                         .font(.headline)
-                        .frame(width:175, height:330)
+                        .frame(width:175, height:360)
                     }
                 }.background(Color.green).cornerRadius(30)
+                .padding(.horizontal, 10)
                 
             }
         }

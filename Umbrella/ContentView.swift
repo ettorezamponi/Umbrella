@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectedSeats: [Seat] = []
     
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
