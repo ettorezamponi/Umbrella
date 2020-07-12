@@ -6,6 +6,7 @@
 //  Copyright © 2020 Ettore Zamponi. All rights reserved.
 //
 import SwiftUI
+import Firebase
 
 
 struct ChairView: View {
@@ -17,6 +18,7 @@ struct ChairView: View {
     var isSelectable = true
     var onSelect: ((Seat)->()) = {_ in }
     var onDeselect: ((Seat)->()) = {_ in }
+    var onReserved: ((Seat)->()) = {_ in }
     
     
     var body: some View {
@@ -33,6 +35,8 @@ struct ChairView: View {
                 } else {
                     self.onDeselect(self.seat)
                 }
+            } else {
+                self.onReserved(self.seat)
             }
         }
     }

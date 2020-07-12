@@ -39,9 +39,10 @@ struct TheatreView: View {
                 
                 
                 VStack {
-                    createFrontRows()
-                    //createBackRows()
+                    createUmbrellaView()
                     createSeatsLegend()
+                    
+                }.onAppear(){
                     
                 }
                 
@@ -63,7 +64,7 @@ struct TheatreView: View {
         }
     }
     
-    fileprivate func createFrontRows() -> some View {
+    fileprivate func createUmbrellaView() -> some View {
         
         let rows: Int = 6
         let numbersPerRow: Int = 8
@@ -78,29 +79,8 @@ struct TheatreView: View {
                                 self.selectedSeats.append(seat)
                             }, onDeselect: { seat in
                                 self.selectedSeats.removeAll(where: {$0.id == seat.id})
-                            })
-                        }
-                    }
-                }
-        }
-    }
-    
-    fileprivate func createBackRows() -> some View {
-        
-        
-        let rows: Int = 5
-        let numbersPerRow: Int = 9
-        
-        return
-            
-            VStack {
-                ForEach(0..<rows, id: \.self) { row in
-                    HStack{
-                        ForEach(0..<numbersPerRow, id: \.self){ number in
-                            ChairView(width: 30, accentColor: .blue, seat: Seat(id: UUID(), row: row + 3, number: number + 15) , onSelect: { seat in
+                            },onReserved: { seat in
                                 self.selectedSeats.append(seat)
-                            }, onDeselect: { seat in
-                                self.selectedSeats.removeAll(where: {$0.number == seat.number})
                             })
                         }
                     }

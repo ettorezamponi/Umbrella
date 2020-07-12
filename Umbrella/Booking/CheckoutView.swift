@@ -7,9 +7,12 @@
 //  Copyright © 2020 Ettore Zamponi. All rights reserved.
 //
 import SwiftUI
+import Firebase
 
 struct CheckoutView: View {
+    
     @Environment(\.presentationMode) var presentationMode
+
     
     var body: some View {
         VStack{
@@ -56,6 +59,7 @@ struct CheckoutView: View {
             
         }
     }
+    
 }
 
 struct CheckoutView_Previews: PreviewProvider {

@@ -62,3 +62,10 @@ struct User {
         self.email = email
     }
 }
+
+//per le review
+class Host: UIHostingController<ContentView> {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+}
