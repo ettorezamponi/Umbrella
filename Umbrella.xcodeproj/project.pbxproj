@@ -20,6 +20,7 @@
 		A13FE26524B61D280023E5ED /* ScreenShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13FE26424B61D280023E5ED /* ScreenShape.swift */; };
 		A13FE26924B61F260023E5ED /* ChairLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13FE26824B61F260023E5ED /* ChairLegend.swift */; };
 		A13FE26B24B6212F0023E5ED /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13FE26A24B6212F0023E5ED /* ColorExt.swift */; };
+		A14D3C9E24BB59BB0006EE73 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D3C9D24BB59BB0006EE73 /* ReservationView.swift */; };
 		A166CFBE2430B682007E5A89 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A166CFBD2430B682007E5A89 /* SessionStore.swift */; };
 		A167AA1B244A402900EBA00D /* LoggedAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167AA1A244A402900EBA00D /* LoggedAccountView.swift */; };
 		A17357762452F77300A8898F /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17357752452F77300A8898F /* EditProfileView.swift */; };
@@ -61,6 +62,7 @@
 		A13FE26424B61D280023E5ED /* ScreenShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenShape.swift; sourceTree = "<group>"; };
 		A13FE26824B61F260023E5ED /* ChairLegend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChairLegend.swift; sourceTree = "<group>"; };
 		A13FE26A24B6212F0023E5ED /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
+		A14D3C9D24BB59BB0006EE73 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
 		A15A02D8243A2F3E0087DE75 /* Umbrella.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Umbrella.entitlements; sourceTree = "<group>"; };
 		A166CFBD2430B682007E5A89 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		A167AA1A244A402900EBA00D /* LoggedAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedAccountView.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				A18391292403C884001CFC62 /* Preview Content */,
 				A1F44C47242F76570019EE23 /* HomeView.swift */,
 				A1F44C4F242F76C80019EE23 /* BookingView.swift */,
+				A14D3C9D24BB59BB0006EE73 /* ReservationView.swift */,
 				A1F44C4B242F76760019EE23 /* ReviewsView.swift */,
 				A1F44C4D242F76890019EE23 /* AccountView.swift */,
 				A1FF194D2430EF0600805816 /* LoginView.swift */,
@@ -359,6 +362,7 @@
 				A13FE26324B61B9A0023E5ED /* TheatreView.swift in Sources */,
 				A18391242403C881001CFC62 /* SceneDelegate.swift in Sources */,
 				A1B8F2D424572C90003E7451 /* CurrentWeather.swift in Sources */,
+				A14D3C9E24BB59BB0006EE73 /* ReservationView.swift in Sources */,
 				A10BAE7224B479A700DCD442 /* RKManager.swift in Sources */,
 				A1F44C4A242F766A0019EE23 /* SwiftUIView.swift in Sources */,
 				A10BAE7824B47AAB00DCD442 /* RKWeekdayHeader.swift in Sources */,
