@@ -221,14 +221,8 @@ struct ChoseMethodView: View {
 struct LoginView: View {
     var body: some View {
         NavigationView {
+            
             VStack{
-                HStack {
-                    Text("Login!")
-                        .font(.system(size: 45))
-                        .fontWeight(.heavy)
-                        .padding(.leading)
-                    Spacer()
-                }
 
                 Spacer()
                 
@@ -284,7 +278,9 @@ struct LoginView: View {
                         
                     }
                 }
-            }.padding([.leading, .bottom, .trailing], 32)
+            }
+            .padding([.leading, .bottom, .trailing], 32)
+            .navigationBarTitle("Login")
         }
     }
 }

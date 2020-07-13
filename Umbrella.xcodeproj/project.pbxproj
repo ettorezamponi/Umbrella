@@ -44,7 +44,6 @@
 		A1F44C4A242F766A0019EE23 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F44C49242F766A0019EE23 /* SwiftUIView.swift */; };
 		A1F44C4C242F76760019EE23 /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F44C4B242F76760019EE23 /* ReviewsView.swift */; };
 		A1F44C4E242F76890019EE23 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F44C4D242F76890019EE23 /* AccountView.swift */; };
-		A1F44C50242F76C80019EE23 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F44C4F242F76C80019EE23 /* BookingView.swift */; };
 		A1FF194E2430EF0600805816 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF194D2430EF0600805816 /* LoginView.swift */; };
 		A1FF1BBC2469503600ECD992 /* Maps.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FF1BBB2469503600ECD992 /* Maps.swift */; };
 /* End PBXBuildFile section */
@@ -89,7 +88,6 @@
 		A1F44C49242F766A0019EE23 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		A1F44C4B242F76760019EE23 /* ReviewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
 		A1F44C4D242F76890019EE23 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
-		A1F44C4F242F76C80019EE23 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
 		A1FF194D2430EF0600805816 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A1FF1BBB2469503600ECD992 /* Maps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maps.swift; sourceTree = "<group>"; };
 		ADF0058B0813DC4F093209A0 /* Pods_Umbrella.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Umbrella.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,7 +184,6 @@
 				A15A02D8243A2F3E0087DE75 /* Umbrella.entitlements */,
 				A18391292403C884001CFC62 /* Preview Content */,
 				A1F44C47242F76570019EE23 /* HomeView.swift */,
-				A1F44C4F242F76C80019EE23 /* BookingView.swift */,
 				A14D3C9D24BB59BB0006EE73 /* ReservationView.swift */,
 				A1F44C4B242F76760019EE23 /* ReviewsView.swift */,
 				A1F44C4D242F76890019EE23 /* AccountView.swift */,
@@ -377,7 +374,6 @@
 				A10BAE7624B47A8E00DCD442 /* RKCell.swift in Sources */,
 				A1B8F2CD2456E395003E7451 /* API.swift in Sources */,
 				A1F071FE24B9BDFC00F8BC2B /* ChairView.swift in Sources */,
-				A1F44C50242F76C80019EE23 /* BookingView.swift in Sources */,
 				A1F44C4C242F76760019EE23 /* ReviewsView.swift in Sources */,
 				A1B8F2D02457242C003E7451 /* CurrentWeatherViewModel.swift in Sources */,
 				A1B8F2CB2456E18D003E7451 /* Weather.swift in Sources */,

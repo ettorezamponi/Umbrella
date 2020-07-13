@@ -31,65 +31,60 @@ struct Reservation : View {
     let numberPerRow = 5
     
     var body: some View {
-        VStack{
+        NavigationView {
             
-            HStack {
-                Text("Booking")
-                    .font(.system(size: 45))
-                    .fontWeight(.heavy)
-                    .padding(.leading)
+            VStack{
                 
-                Spacer()
-            }
-            
-            ZStack{
-                
-                ScreenShape()
-                    .stroke(style:  StrokeStyle(lineWidth: 5,  lineCap: .square ))
-                    .frame(height: 420)
-                    .foregroundColor(Color.blue)
-                
-                if self.Umbrell.data.isEmpty {
-                    Text("Database updating...")
-                }
-                else
-                {
-                    Grid(self.Umbrell.data){ i in
-                        Button(action: {
-                            self.docID = i.id
-                            self.docnumber = i.number
-                            print(i.id)
-                            
-                        }) {
-                            HStack{
-                                ChairViewTry(umbrella: i)
+                ZStack{
+                    
+                    ScreenShape()
+                        .stroke(style:  StrokeStyle(lineWidth: 5,  lineCap: .square ))
+                        .frame(height: 420)
+                        .foregroundColor(Color.blue)
+                    
+                    if self.Umbrell.data.isEmpty {
+                        Text("Database updating...")
+                    }
+                    else
+                    {
+                        Grid(self.Umbrell.data){ i in
+                            Button(action: {
+                                self.docID = i.id
+                                self.docnumber = i.number
+                                print(i.id)
+                                
+                            }) {
+                                HStack{
+                                    ChairViewTry(umbrella: i)
+                                }
                             }
                         }
+                        .gridStyle(StaggeredGridStyle(tracks: 3, spacing: 4))
+                        //ForEach(self.Umbrell.data){ i in
+                        //
+                        //                        //    HStack {
+                        //
+                        //
+                        //
+                        ////                                Button(action: {
+                        ////                                    self.docID = i.id
+                        ////                                    self.docnumber = i.number
+                        ////                                    print(i.id)
+                        ////
+                        ////                                }) {
+                        ////                                    HStack{
+                        ////                                        ChairViewTry()
+                        ////                                    }
+                        ////                                }
+                        //                           // }
+                        //
+                        //                    }
+                        
                     }
-                    .gridStyle(StaggeredGridStyle(tracks: 3, spacing: 4))
-                    //ForEach(self.Umbrell.data){ i in
-//
-//                        //    HStack {
-//
-//
-//
-////                                Button(action: {
-////                                    self.docID = i.id
-////                                    self.docnumber = i.number
-////                                    print(i.id)
-////
-////                                }) {
-////                                    HStack{
-////                                        ChairViewTry()
-////                                    }
-////                                }
-//                           // }
-//
-//                    }
-                     
+                    
                 }
-                
             }
+        .navigationBarTitle("Booking")
         }
     }
 }

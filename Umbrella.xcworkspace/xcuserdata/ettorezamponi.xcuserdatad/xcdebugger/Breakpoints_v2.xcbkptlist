@@ -14,8 +14,8 @@
             filePath = "Umbrella/ReservationView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -62,8 +62,8 @@
             filePath = "Umbrella/ReservationView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>
