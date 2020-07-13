@@ -247,6 +247,12 @@ struct LoginView: View {
                 google()
                     .frame(width: 310, height: 60)
                     .cornerRadius(20)
+//                    .overlay(
+//                    RoundedRectangle(cornerRadius: 20)
+//                        .stroke(Color.black, lineWidth: 1))
+//                    .background(Color.gray)
+//                    .foregroundColor(.white)
+//                    .cornerRadius(20)
                 
                 loginFB()
                     .frame(width: 310, height: 55)
@@ -285,6 +291,7 @@ struct LoginView: View {
 
 //Google Login
 struct google: UIViewRepresentable {
+    
     func makeUIView(context: UIViewRepresentableContext<google>) -> GIDSignInButton {
         let button = GIDSignInButton()
         button.colorScheme = .light

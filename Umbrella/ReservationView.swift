@@ -51,14 +51,27 @@ struct Reservation : View {
                 if self.Umbrell.data.isEmpty {
                     Text("Database updating...")
                 }
-                else {
-                    //ForEach(0..<row) { row in
-                    HStack{
-                        ForEach(self.Umbrell.data){i in
-                            ChairViewTry()
+                else
+                {
+                        
+                        ForEach(self.Umbrell.data){ i in
+                            
+                            HStack {
+                                
+                                Button(action: {
+                                    self.docID = i.id
+                                    self.docnumber = i.number
+                                    print(i.id)
+                                    
+                                }) {
+                                    HStack{
+                                        ChairViewTry()
+                                    }
+                                }
+                            }
+                            
                         }
-                    }
-                    //}  
+                     
                 }
                 
             }
@@ -83,8 +96,11 @@ struct ChairViewTry: View {
                 .foregroundColor(TAP ? Color.green : Color.red)
         }.onTapGesture {
             //self.db.collection("umbrellaXY").document(self.Umbrell)
-            print(self.Umbrell.data)
+            //var x = self.Umbrell.data
+            //var y = x.map {$0.id}
+            //print(y)
             self.TAP = false
+            //db.collection("umbrellaXY").document(x).setData
         }
     }
 }
@@ -135,4 +151,10 @@ struct Umbrella : Identifiable {
     var id : String
     var number : String
     var available : Bool
+    
+    init(id: String, number: String, available: Bool) {
+        self.id = id
+        self.number = number
+        self.available = available
+    }
 }

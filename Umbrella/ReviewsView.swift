@@ -29,6 +29,7 @@ struct Home : View {
     @State var txt = ""
     @State var docID = ""
     @State var remove = false
+    @EnvironmentObject var session: SessionStore
     
     var body : some View{
         
@@ -38,9 +39,14 @@ struct Home : View {
                 
                 HStack{
                     
-                    Text("Notes").font(.title).foregroundColor(.white)
-                    
-                    Spacer()
+                    HStack{
+                        Text("Reviews")
+                            .font(.system(size: 45))
+                            .fontWeight(.heavy)
+                            .padding(.leading)
+                        
+                        Spacer()
+                    }
                     
                     Button(action: {
                         
@@ -48,12 +54,10 @@ struct Home : View {
                         
                     }) {
                         
-                        Image(systemName: self.remove ? "xmark.circle" : "trash").resizable().frame(width: 23, height: 23).foregroundColor(.white)
-                    }
+                        Image(systemName: self.remove ? "xmark.circle" : "trash").resizable().frame(width: 23, height: 23).foregroundColor(.black)
+                    }.disabled(session.session?.email == nil)
                     
                 }.padding()
-                .padding(.top,UIApplication.shared.windows.first?.safeAreaInsets.top)
-                .background(Color.red)
                 
                 if self.Notes.data.isEmpty{
                     
@@ -132,13 +136,14 @@ struct Home : View {
                 }
                 
                 
-            }.edgesIgnoringSafeArea(.top)
+            }//.edgesIgnoringSafeArea(.top)
             
             Button(action: {
                 
                 self.txt = ""
                 self.docID = ""
                 self.show.toggle()
+                
                 
             }) {
                 
@@ -148,6 +153,7 @@ struct Home : View {
             .background(Color.red)
             .clipShape(Circle())
             .padding()
+            .disabled(session.session?.email == nil)
         }
         .sheet(isPresented: self.$show) {
             

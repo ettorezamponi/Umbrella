@@ -25,7 +25,7 @@ struct CurrentWeather: View {
                 Text("\(weather?.main.temp.round ?? 0)")
                     .foregroundColor(.white)
                     .fontWeight(Font.Weight.heavy)
-                    .font(.system(size: 28))
+                    .font(.system(size: 25))
             }
             Text("\(weather?.weather.last?.description ?? "unkown")")
                 .foregroundColor(.white)

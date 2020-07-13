@@ -42,10 +42,11 @@ struct HomeView: View {
                     Text ("Accedi o registrati nella sezione account per avere tutte le funzionalità di questa app")
                         .font(.system(size: 25))
                         .fontWeight(.bold)
-                        .frame(width:300, height: 150)
+                        .frame(width:330, height: 150)
                     
                 }.background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing))
-                .cornerRadius(30).frame(width: 50)
+                 .cornerRadius(30)
+                 .frame(width: 50)
                 
             } else if (url != "") {
                 HStack(alignment: .center) {
@@ -62,12 +63,16 @@ struct HomeView: View {
             } else {
                 //logged but without info
                 HStack(alignment: .center) {
-                    //Loader()
+                    
+                    Image(systemName: Constants.accountImageAbsent)
+                    .padding(.leading)
+                    .frame(width: 60, height: 60)
+                    .font(.system(size: 50))
                     
                     Text ("Tell us more about you in the account section")
                         .font(.system(size: 25))
                         .fontWeight(.bold)
-                        .frame(width:300, height: 150)
+                        .frame(width:330, height: 150)
                     
                 }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
                     .cornerRadius(30).frame(width: 50)
@@ -101,10 +106,11 @@ struct HomeView: View {
 //                            .frame(width:175, height:125)
                     }.cornerRadius(30)
                 }.padding(.horizontal, 8)
+                 //.padding(.vertical, 6)
                 
-                VStack{
+                VStack {
                     Image(systemName: Constants.forkImage)
-                        .padding(.top, 30.0)
+                        .padding(.top, 60.0)
                         .frame(width: 60, height: 60)
                         .font(.system(size: 50))
                     
@@ -112,8 +118,8 @@ struct HomeView: View {
                         
                         Text ("\(receipe)")
                         .font(.headline)
-                        .font(.system(size: 20))
-                        .frame(width:175, height:360)
+                        .font(.system(size: 45))
+                        .frame(width:170, height:450)
                         
                     } else {
                         
@@ -122,9 +128,11 @@ struct HomeView: View {
                         .frame(width:175, height:360)
                     }
                 }.background(Color.green).cornerRadius(30)
-                .padding(.horizontal, 10)
+                 .padding(.horizontal, 10)
                 
-            }
+                
+            }.padding(.bottom, 10)
+                
         }
         .onAppear(){
             let uid = Auth.auth().currentUser?.uid

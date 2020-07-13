@@ -51,7 +51,7 @@ struct LoggedAccountView: View {
                         EditProfileView()
                     }).foregroundColor(Color.blue)
                 }
-            .padding(.top, 20.0)
+            .padding(.top, 50)
             .onAppear(){
                 let uid = Auth.auth().currentUser?.uid
                 let storage = Storage.storage().reference()
@@ -88,11 +88,12 @@ struct LoggedAccountView: View {
                     Text("Prenotazione dal 12/7 al 16/7")
                         .font(.system(size: 15))
                 }
-                    .frame(width:365, height: 100)
-                .padding(.bottom, 30.0)
+                .frame(width:365, height: 80)
+                .padding(.bottom, 40)
                 .background(Color(red: 0.63, green: 0.81, blue: 0.96))
                 .cornerRadius(20)
                 
+                Spacer()
                 
                 VStack{
                     Text("Reviews")
@@ -103,6 +104,7 @@ struct LoggedAccountView: View {
                     Text("Stabilimento molto pulito e tenuto maniacalmente. Un paradiso per i bagnanti. Tornerò presto a trovarvi, servizio super gentile ed ecuato")
                         .font(.system(size: 15))
                 }
+                .frame(width:365, height: 300)
                 .padding(.bottom, 30.0)
                 .padding(.horizontal, 10.0)
                 .background(Color.yellow)
