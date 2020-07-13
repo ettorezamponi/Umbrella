@@ -101,8 +101,16 @@ struct LoggedAccountView: View {
                         .fontWeight(.semibold)
                         .frame(height: 100)
                     
-                    Text("Stabilimento molto pulito e tenuto maniacalmente. Un paradiso per i bagnanti. Tornerò presto a trovarvi, servizio super gentile ed ecuato")
+                    Text("Stabilimento molto pulito e tenuto maniacalmente. Un paradiso per i bagnanti. Tornerò presto a trovarvi, servizio super gentile ed educato")
                         .font(.system(size: 15))
+                        .padding(.bottom, 15)
+
+                    
+                    Divider()
+                    
+                    Text("Sono tornato una seconda volta con la mia famiglia e le buone impressioni sono state confermate !! Complimneti allo staff")
+                    .font(.system(size: 15))
+                        .padding(.top, 15)
                 }
                 .frame(width:365, height: 300)
                 .padding(.bottom, 30.0)

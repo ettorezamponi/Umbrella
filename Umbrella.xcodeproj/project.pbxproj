@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,7 @@
 		A13FE26924B61F260023E5ED /* ChairLegend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13FE26824B61F260023E5ED /* ChairLegend.swift */; };
 		A13FE26B24B6212F0023E5ED /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13FE26A24B6212F0023E5ED /* ColorExt.swift */; };
 		A14D3C9E24BB59BB0006EE73 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14D3C9D24BB59BB0006EE73 /* ReservationView.swift */; };
+		A15B6DA524BCA7C4002FA305 /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = A15B6DA424BCA7C4002FA305 /* Grid */; };
 		A166CFBE2430B682007E5A89 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A166CFBD2430B682007E5A89 /* SessionStore.swift */; };
 		A167AA1B244A402900EBA00D /* LoggedAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A167AA1A244A402900EBA00D /* LoggedAccountView.swift */; };
 		A17357762452F77300A8898F /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17357752452F77300A8898F /* EditProfileView.swift */; };
@@ -100,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A15B6DA524BCA7C4002FA305 /* Grid in Frameworks */,
 				9547C493EAB145547C42543B /* Pods_Umbrella.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +242,9 @@
 			dependencies = (
 			);
 			name = Umbrella;
+			packageProductDependencies = (
+				A15B6DA424BCA7C4002FA305 /* Grid */,
+			);
 			productName = Umbrella;
 			productReference = A183911E2403C880001CFC62 /* Umbrella.app */;
 			productType = "com.apple.product-type.application";
@@ -268,6 +273,9 @@
 				Base,
 			);
 			mainGroup = A18391152403C880001CFC62;
+			packageReferences = (
+				A15B6DA324BCA7C4002FA305 /* XCRemoteSwiftPackageReference "swiftui-grid" */,
+			);
 			productRefGroup = A183911F2403C880001CFC62 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -590,6 +598,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A15B6DA324BCA7C4002FA305 /* XCRemoteSwiftPackageReference "swiftui-grid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-grid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A15B6DA424BCA7C4002FA305 /* Grid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A15B6DA324BCA7C4002FA305 /* XCRemoteSwiftPackageReference "swiftui-grid" */;
+			productName = Grid;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A18391162403C880001CFC62 /* Project object */;
 }

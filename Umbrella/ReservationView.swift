@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Firebase
+import Grid
 
 struct ReservationView: View {
     var body: some View {
@@ -53,24 +54,38 @@ struct Reservation : View {
                 }
                 else
                 {
-                        
-                        ForEach(self.Umbrell.data){ i in
+                    Grid(self.Umbrell.data){ i in
+                        Button(action: {
+                            self.docID = i.id
+                            self.docnumber = i.number
+                            print(i.id)
                             
-                            HStack {
-                                
-                                Button(action: {
-                                    self.docID = i.id
-                                    self.docnumber = i.number
-                                    print(i.id)
-                                    
-                                }) {
-                                    HStack{
-                                        ChairViewTry()
-                                    }
-                                }
+                        }) {
+                            HStack{
+                                ChairViewTry(umbrella: i)
                             }
-                            
                         }
+                    }
+                    .gridStyle(StaggeredGridStyle(tracks: 3, spacing: 4))
+                    //ForEach(self.Umbrell.data){ i in
+//
+//                        //    HStack {
+//
+//
+//
+////                                Button(action: {
+////                                    self.docID = i.id
+////                                    self.docnumber = i.number
+////                                    print(i.id)
+////
+////                                }) {
+////                                    HStack{
+////                                        ChairViewTry()
+////                                    }
+////                                }
+//                           // }
+//
+//                    }
                      
                 }
                 
@@ -83,8 +98,7 @@ struct Reservation : View {
 
 
 struct ChairViewTry: View {
-    @State private var TAP: Bool = true
-    @ObservedObject var Umbrell = getUmbrella()
+    @ObservedObject var umbrella: Umbrella
     let db = Firestore.firestore()
     //let uid = Umbrella.ID.self as! String
     
@@ -93,13 +107,13 @@ struct ChairViewTry: View {
         VStack(spacing: 4) {
             Circle()
                 .frame(width: 32, height: 32)
-                .foregroundColor(TAP ? Color.green : Color.red)
+                .foregroundColor(self.umbrella.available ? Color.green : Color.red)
         }.onTapGesture {
             //self.db.collection("umbrellaXY").document(self.Umbrell)
             //var x = self.Umbrell.data
             //var y = x.map {$0.id}
             //print(y)
-            self.TAP = false
+            
             //db.collection("umbrellaXY").document(x).setData
         }
     }
@@ -147,10 +161,10 @@ class getUmbrella : ObservableObject {
     
 }
 
-struct Umbrella : Identifiable {
+class Umbrella : ObservableObject, Identifiable {
     var id : String
     var number : String
-    var available : Bool
+    @Published var available : Bool
     
     init(id: String, number: String, available: Bool) {
         self.id = id

@@ -33,128 +33,151 @@ struct Home : View {
     
     var body : some View{
         
-        ZStack(alignment: .bottomTrailing) {
-            
-            VStack(spacing: 0){
+        NavigationView {
                 
-                HStack{
+                VStack(spacing: 0){
                     
-                    HStack{
-                        Text("Reviews")
-                            .font(.system(size: 45))
-                            .fontWeight(.heavy)
-                            .padding(.leading)
+                    //                HStack{
+                    //
+                    //                    HStack{
+                    //                        Text("Reviews")
+                    //                            .font(.system(size: 45))
+                    //                            .fontWeight(.heavy)
+                    //                            .padding(.leading)
+                    //
+                    //                        Spacer()
+                    //                    }
+                    //
+                    //                    Button(action: {
+                    //
+                    //                        self.remove.toggle()
+                    //
+                    //                    }) {
+                    //
+                    //                        Image(systemName: self.remove ? "xmark.circle" : "trash").resizable().frame(width: 23, height: 23).foregroundColor(.black)
+                    //                    }.disabled(session.session?.email == nil)
+                    //
+                    //                }.padding()
+                    
+                    if self.Notes.data.isEmpty{
                         
-                        Spacer()
+                        if self.Notes.noData{
+                            
+                            Spacer()
+                            
+                            Text("No Notes !!!")
+                            
+                            Spacer()
+                        }
+                        else{
+                            
+                            Spacer()
+                            
+                            //Data is Loading ....
+                            
+                            Indicator()
+                            
+                            Spacer()
+                        }
                     }
-                    
-                    Button(action: {
                         
-                        self.remove.toggle()
-                        
-                    }) {
-                        
-                        Image(systemName: self.remove ? "xmark.circle" : "trash").resizable().frame(width: 23, height: 23).foregroundColor(.black)
-                    }.disabled(session.session?.email == nil)
-                    
-                }.padding()
-                
-                if self.Notes.data.isEmpty{
-                    
-                    if self.Notes.noData{
-                        
-                        Spacer()
-                        
-                        Text("No Notes !!!")
-                        
-                        Spacer()
-                    }
                     else{
                         
-                        Spacer()
-                        
-                        //Data is Loading ....
-                        
-                        Indicator()
-                        
-                        Spacer()
-                    }
-                }
-                
-                else{
-                    
-                    ScrollView(.vertical, showsIndicators: false) {
-                        
-                        VStack{
+                        ScrollView(.vertical, showsIndicators: false) {
                             
-                            ForEach(self.Notes.data){i in
+                            VStack{
                                 
-                                HStack(spacing: 15){
+                                ForEach(self.Notes.data){i in
                                     
-                                    Button(action: {
-                                        
-                                        self.docID = i.id
-                                        self.txt = i.note
-                                        
-                                        self.show.toggle()
-                                        
-                                    }) {
-                                        
-                                        VStack(alignment: .leading, spacing: 12){
-                                            
-                                            Text(i.date)
-                                            
-                                            Text(i.note).lineLimit(1)
-                                            
-                                            Divider()
-                                            
-                                        }.padding(10)
-                                        .foregroundColor(.black)
-                                    }
-                                    
-                                    if self.remove{
+                                    HStack(spacing: 15){
                                         
                                         Button(action: {
                                             
-                                            let db = Firestore.firestore()
+                                            self.docID = i.id
+                                            self.txt = i.note
                                             
-                                            db.collection("notes").document(i.id).delete()
+                                            self.show.toggle()
                                             
                                         }) {
                                             
-                                            Image(systemName: "minus.circle.fill")
-                                            .resizable()
-                                            .frame(width: 20, height: 20)
-                                            .foregroundColor(.red)
+                                            VStack(alignment: .leading, spacing: 12){
+                                                
+                                                // Text(i.date)
+                                                
+                                                Text(i.note).lineLimit(1)
+                                                
+                                                Divider()
+                                                
+                                            }.padding(10)
+                                                .foregroundColor(.black)
                                         }
-                                    }
- 
-                                }.padding(.horizontal)
+                                        
+                                        if self.remove{
+                                            
+                                            Button(action: {
+                                                
+                                                let db = Firestore.firestore()
+                                                
+                                                db.collection("notes").document(i.id).delete()
+                                                
+                                            }) {
+                                                
+                                                Image(systemName: "minus.circle.fill")
+                                                    .resizable()
+                                                    .frame(width: 20, height: 20)
+                                                    .foregroundColor(.red)
+                                            }
+                                        }
+                                        
+                                    }.padding(.horizontal)
+                                }
                             }
                         }
                     }
+                    
+                    
                 }
+                .navigationBarTitle("Reviews")
+                .navigationBarItems(trailing:
+                    Button(action: {
+
+                    self.txt = ""
+                    self.docID = ""
+                    self.show.toggle()
+
+
+                }) {
+
+                    Image(systemName: "plus").resizable()
+
+                }
+                    //.padding()
+//                    .background(Color.red)
+//                    .clipShape(Circle())
+//                    .padding()
+                    .disabled(session.session?.email == nil)
+)
+            //.edgesIgnoringSafeArea(.top)
                 
-                
-            }//.edgesIgnoringSafeArea(.top)
-            
-            Button(action: {
-                
-                self.txt = ""
-                self.docID = ""
-                self.show.toggle()
-                
-                
-            }) {
-                
-                Image(systemName: "plus").resizable().frame(width: 18, height: 18).foregroundColor(.white)
-                
-            }.padding()
-            .background(Color.red)
-            .clipShape(Circle())
-            .padding()
-            .disabled(session.session?.email == nil)
+//                Button(action: {
+//
+//                    self.txt = ""
+//                    self.docID = ""
+//                    self.show.toggle()
+//
+//
+//                }) {
+//
+//                    Image(systemName: "plus").resizable().frame(width: 18, height: 18).foregroundColor(.white)
+//
+//                }.padding()
+//                    .background(Color.red)
+//                    .clipShape(Circle())
+//                    .padding()
+//                    .disabled(session.session?.email == nil)
+
         }
+        
         .sheet(isPresented: self.$show) {
             
             EditView(txt: self.$txt, docID: self.$docID, show: self.$show)
@@ -220,7 +243,7 @@ class getNotes : ObservableObject{
                     // when data is changed...
                     
                     let id = i.document.documentID
-                       
+                    
                     let notes = i.document.get("notes") as! String
                     
                     for i in 0..<self.data.count{
@@ -305,8 +328,8 @@ struct EditView : View {
                 Text("Save").padding(.vertical).padding(.horizontal,25).foregroundColor(.white)
                 
             }.background(Color.red)
-            .clipShape(Capsule())
-            .padding()
+                .clipShape(Capsule())
+                .padding()
             
         }.edgesIgnoringSafeArea(.bottom)
     }
@@ -327,7 +350,7 @@ struct EditView : View {
                 }
             }
         }
-        
+            
         else{
             
             db.collection("notes").document().setData(["notes":self.txt,"date":Date()]) { (err) in
@@ -397,7 +420,7 @@ struct MultiLineTF : UIViewRepresentable {
                 textView.text = ""
                 textView.textColor = .black
             }
-
+            
         }
         
         func textViewDidChange(_ textView: UITextView) {
