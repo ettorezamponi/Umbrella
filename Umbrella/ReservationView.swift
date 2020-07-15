@@ -27,11 +27,10 @@ struct Reservation : View {
     @State var docnumber = ""
     @State var docID = ""
     @State var docavailable = ""
-    let row = 3
-    let numberPerRow = 5
     
     var body: some View {
-        NavigationView {
+        
+        //NavigationView {
             
             VStack{
                 
@@ -51,7 +50,7 @@ struct Reservation : View {
                             Button(action: {
                                 self.docID = i.id
                                 self.docnumber = i.number
-                                print(i.id)
+                                //print(i.id)
                                 
                             }) {
                                 HStack{
@@ -59,33 +58,14 @@ struct Reservation : View {
                                 }
                             }
                         }
-                        .gridStyle(StaggeredGridStyle(tracks: 3, spacing: 4))
-                        //ForEach(self.Umbrell.data){ i in
-                        //
-                        //                        //    HStack {
-                        //
-                        //
-                        //
-                        ////                                Button(action: {
-                        ////                                    self.docID = i.id
-                        ////                                    self.docnumber = i.number
-                        ////                                    print(i.id)
-                        ////
-                        ////                                }) {
-                        ////                                    HStack{
-                        ////                                        ChairViewTry()
-                        ////                                    }
-                        ////                                }
-                        //                           // }
-                        //
-                        //                    }
+                        .gridStyle(StaggeredGridStyle(tracks: 5, spacing: 20))
                         
                     }
                     
                 }
             }
-        .navigationBarTitle("Booking")
-        }
+        //.navigationBarTitle("Booking")
+       // }
     }
 }
 
@@ -95,7 +75,6 @@ struct Reservation : View {
 struct ChairViewTry: View {
     @ObservedObject var umbrella: Umbrella
     let db = Firestore.firestore()
-    //let uid = Umbrella.ID.self as! String
     
     var body: some View {
         
@@ -108,9 +87,8 @@ struct ChairViewTry: View {
             //var x = self.Umbrell.data
             //var y = x.map {$0.id}
             //print(y)
-            
-            //db.collection("umbrellaXY").document(x).setData
-        }
+            self.db.collection("umbrellaXY").document(self.umbrella.id).updateData(["available": false])
+        }.disabled(self.umbrella.available == false)
     }
 }
 
