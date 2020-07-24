@@ -94,7 +94,6 @@ struct ChairViewTry: View {
 
 
 
-
 class getUmbrella : ObservableObject {
     @Published var data = [Umbrella]()
     

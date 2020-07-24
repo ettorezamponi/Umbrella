@@ -44,15 +44,19 @@ struct HomeView: View {
                     
                 } else if (url != "") {
                     HStack(alignment: .center) {
-                        AnimatedImage(url: URL(string: url)).resizable().frame(width: 100, height: 150).clipShape(Circle())
+                        AnimatedImage(url: URL(string: url)).resizable()
+                            .frame(width: 100, height: 120)
+                            .clipShape(Circle())
+                            .padding(.leading)
                         
                         Text ("Bentornato, \(username)")
-                            .font(.system(size: 25))
+                            .font(.system(size: 22))
                             .fontWeight(.bold)
-                            .frame(width:300, height: 150)
+                            .frame(width:245, height: 140)
                         
                     }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
-                        .cornerRadius(30).frame(width: 50)
+                     .cornerRadius(30)
+                     .frame(width: 50)
                     
                 } else {
                     //logged but without info
@@ -60,16 +64,17 @@ struct HomeView: View {
                         
                         Image(systemName: Constants.accountImageAbsent)
                         .padding(.leading)
-                        .frame(width: 60, height: 60)
+                        .frame(width: 50, height: 50)
                         .font(.system(size: 50))
                         
                         Text ("Tell us more about you in the account section")
                             .font(.system(size: 25))
                             .fontWeight(.bold)
-                            .frame(width:330, height: 150)
+                            .frame(width:285, height: 140)
                         
                     }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
-                        .cornerRadius(30).frame(width: 50)
+                     .cornerRadius(30)
+                     .frame(width: 50)
                 }
                 
                 HStack {
