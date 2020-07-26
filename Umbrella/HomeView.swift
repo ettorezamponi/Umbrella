@@ -20,6 +20,10 @@ struct HomeView: View {
     @State private var selected = 0
     @ObservedObject var weather = CurrentWeatherViewModel()
     
+    func getUser() {
+        session.listen()
+    }
+    
     var body: some View {
         
         NavigationView {
@@ -184,7 +188,10 @@ struct HomeView: View {
                 }
             
         }
+        //per caricare subito l'utente loggato nella home al primo avvio
+        .onAppear(perform: getUser)
     }
+    
 }
 
 struct Loader : UIViewRepresentable {
