@@ -34,7 +34,23 @@ struct Reservation : View {
             
             VStack{
                 
+                HStack {
+                    Text("Booking")
+                        .font(.system(size: 30))
+                        .fontWeight(.heavy)
+                        .padding(.leading, 15)
+                        .padding(.top, 50)
+                    
+                    Spacer()
+                }
+                
                 ZStack{
+                    
+                    Rectangle()
+                        .fill(LinearGradient(gradient: Gradient(colors: [Color.blue.opacity(0.3), .clear]) , startPoint: .init(x: 0.5, y: 0.0), endPoint: .init(x: 0.5, y: 0.5)) )
+                        .frame(height: 420)
+                        .clipShape(ScreenShape(isClip: true))
+                        .cornerRadius(20)
                     
                     ScreenShape()
                         .stroke(style:  StrokeStyle(lineWidth: 5,  lineCap: .square ))
@@ -58,15 +74,29 @@ struct Reservation : View {
                                 }
                             }
                         }
-                        .gridStyle(StaggeredGridStyle(tracks: 5, spacing: 20))
+                        .gridStyle(StaggeredGridStyle(tracks: 5, spacing: 15))
                         
                     }
                     
+                }
+                ZStack{
+                    RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1).frame(width: 330, height: 60).padding(.bottom, 70).padding(.horizontal, 20)
+                    createSeatsLegend()
                 }
             }
         //.navigationBarTitle("Booking")
        // }
     }
+    
+    fileprivate func createSeatsLegend() -> some View{
+        HStack{
+            //ChairLegend(text: "Selected", color: .blue)
+            ChairLegend(text: "Reserved", color: .red)
+            ChairLegend(text: "Available", color: .green)
+        }.padding(.horizontal, 20)
+         .padding(.bottom, 70)
+    }
+    
 }
 
 
@@ -75,23 +105,68 @@ struct Reservation : View {
 struct ChairViewTry: View {
     @ObservedObject var umbrella: Umbrella
     let db = Firestore.firestore()
+    @EnvironmentObject var session: SessionStore
+    @State private var showingAlert = false
+     @State private var alertItem: AlertItem?
     
     var body: some View {
         
-        VStack(spacing: 4) {
-            Circle()
-                .frame(width: 32, height: 32)
-                .foregroundColor(self.umbrella.available ? Color.green : Color.red)
-        }.onTapGesture {
-            //self.db.collection("umbrellaXY").document(self.Umbrell)
-            //var x = self.Umbrell.data
-            //var y = x.map {$0.id}
-            //print(y)
-            self.db.collection("umbrellaXY").document(self.umbrella.id).updateData(["available": false])
-        }.disabled(self.umbrella.available == false)
+//        if (session.session?.email == nil) {
+//            logged = false
+//        } else {
+//            logged = true
+//        }
+        
+//        VStack(spacing: 4) {
+//            Circle()
+//                .frame(width: 32, height: 32)
+//                .foregroundColor(self.umbrella.available ? Color.green : Color.red)
+//        }.onTapGesture {
+//
+//            self.db.collection("umbrellaXY").document(self.umbrella.id).updateData(["available": false])
+//            self.showingAlert = true
+//            self.foregroundColor(Color.red)
+//
+//        }.allowsHitTesting(true)
+//        .alert(isPresented: $showingAlert) {
+        //            Alert(title: Text("Umbrella reserved"), message: Text("Your umbrella is booked, close and re-open the app to see your position reserved"), dismissButton: .default(Text("OK")))
+        //        }
+        VStack{
+            
+            Button (action: {
+                if (self.session.session?.email == nil) {
+                    
+                    self.alertItem = AlertItem(title: Text("Account missing"), message: Text("You need to log in or sign in to book your umbrella"), dismissButton:.cancel(Text("Ok")))
+                
+                } else if (self.umbrella.available) {
+                    
+                    self.db.collection("umbrellaXY").document(self.umbrella.id).updateData(["available": false])
+                    self.alertItem = AlertItem(title: Text("Umbrella reserved"), message: Text("Successful confirmation, enjoy your holiday"), dismissButton:.cancel(Text("Ok")))
+                } else {
+                    self.alertItem = AlertItem(title: Text("Umbrella not available"), message: Text("You can not reserve this umbrella, try with another available"), dismissButton:.cancel(Text("Ok")))
+
+                }
+                
+            }) {
+                Circle()
+                    .frame(width: 32, height: 32)
+                    .foregroundColor(self.umbrella.available ? Color.green : Color.red)
+            }
+                //.disabled(session.session?.email == nil && self.umbrella.available)
+                .alert(item: $alertItem) {
+                    alertItem in
+                    Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
+            }
+        }
     }
 }
 
+struct AlertItem: Identifiable {
+    var id = UUID()
+    var title: Text
+    var message: Text?
+    var dismissButton: Alert.Button?
+}
 
 
 class getUmbrella : ObservableObject {
@@ -120,10 +195,10 @@ class getUmbrella : ObservableObject {
                 
                 if i.type == .modified {
                     let id = i.document.documentID
-                    let umbrellas = i.document.get("number") as! String
+                    let umbrellas = i.document.get("available") as! Bool
                     for i in 0..<self.data.count {
                         if self.data[i].id == id {
-                            self.data[i].number = umbrellas
+                            self.data[i].available = umbrellas
                         }
                     }
                 }

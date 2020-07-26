@@ -122,9 +122,9 @@ struct HomeView: View {
                             
                         } else {
                             
-                        Text ("Menu non ancora aggiornato!")
-                            .font(.headline)
-                            .frame(width:175, height:300)
+                            Text ("Menu non ancora aggiornato!")
+                                .font(.headline)
+                                .frame(width:170, height:340)
                         }
                     }.background(Color.green).cornerRadius(30)
                      .padding(.horizontal, 10)

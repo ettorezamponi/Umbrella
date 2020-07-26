@@ -65,7 +65,7 @@ struct Home : View {
                             
                             Spacer()
                             
-                            Text("No Notes !!!")
+                            Text("No Reviews !!!")
                             
                             Spacer()
                         }
@@ -109,7 +109,7 @@ struct Home : View {
                                                 Divider()
                                                 
                                             }.padding(10)
-                                                .foregroundColor(.black)
+                                             .foregroundColor(.black)
                                         }
                                         
                                         if self.remove{
