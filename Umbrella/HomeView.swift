@@ -36,15 +36,18 @@ struct HomeView: View {
                             .padding(.leading)
                             .frame(width: 40, height: 40)
                             .font(.system(size: 50))
-                        
+                            .foregroundColor(.white)
+
                         Text ("Accedi o registrati nella sezione account per avere tutte le funzionalità di questa app")
                             .font(.system(size: 25))
                             .fontWeight(.bold)
                             .frame(width:285, height: 140)
+                            .foregroundColor(.white)
                         
-                    }.background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                    }
+                     .background(Color(red: 0.95, green: 0.37, blue: 0.37))
                      .cornerRadius(30)
-                     .frame(width: 50)
+                     .frame(width: 60)
                     
                 } else if (url != "") {
                     HStack(alignment: .center) {
@@ -57,6 +60,8 @@ struct HomeView: View {
                             .font(.system(size: 22))
                             .fontWeight(.bold)
                             .frame(width:245, height: 140)
+                            .foregroundColor(.white)
+
                         
                     }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
                      .cornerRadius(30)
@@ -70,18 +75,21 @@ struct HomeView: View {
                         .padding(.leading)
                         .frame(width: 50, height: 50)
                         .font(.system(size: 50))
+                        .foregroundColor(.white)
                         
                         Text ("Tell us more about you in the account section")
                             .font(.system(size: 25))
                             .fontWeight(.bold)
                             .frame(width:285, height: 140)
-                        
+                            .foregroundColor(.white)
+
                     }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
                      .cornerRadius(30)
                      .frame(width: 50)
                 }
                 
                 HStack {
+                    //Weather and Maps
                     VStack{
                         VStack{
                             GeometryReader { gr in
@@ -116,6 +124,7 @@ struct HomeView: View {
                             .padding(.top, 60.0)
                             .frame(width: 60, height: 60)
                             .font(.system(size: 50))
+                            .foregroundColor(.white)
                         
                         if (receipe.count > 5) {
                             
@@ -123,14 +132,19 @@ struct HomeView: View {
                             .font(.headline)
                             .font(.system(size: 45))
                             .frame(width:170, height:340)
+                            .foregroundColor(.white)
                             
                         } else {
                             
                             Text ("Menu non ancora aggiornato!")
                                 .font(.headline)
                                 .frame(width:170, height:340)
+                                .foregroundColor(.white)
+                            
                         }
-                    }.background(Color.green).cornerRadius(30)
+                    }
+                     .background(Color(red: 0.45, green: 0.70, blue: 0.60))
+                     .cornerRadius(30)
                      .padding(.horizontal, 10)
                     
                     

@@ -80,7 +80,12 @@ struct Reservation : View {
                     
                 }
                 ZStack{
-                    RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1).frame(width: 330, height: 60).padding(.bottom, 70).padding(.horizontal, 20)
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.blue, lineWidth: 1)
+                        .opacity(0.5)
+                        .frame(width: 330, height: 60)
+                        .padding(.bottom, 70)
+                        .padding(.horizontal, 20)
                     createSeatsLegend()
                 }
             }
@@ -142,7 +147,9 @@ struct ChairViewTry: View {
                     
                     self.db.collection("umbrellaXY").document(self.umbrella.id).updateData(["available": false])
                     self.alertItem = AlertItem(title: Text("Umbrella reserved"), message: Text("Successful confirmation, enjoy your holiday"), dismissButton:.cancel(Text("Ok")))
+                    
                 } else {
+                    
                     self.alertItem = AlertItem(title: Text("Umbrella not available"), message: Text("You can not reserve this umbrella, try with another available"), dismissButton:.cancel(Text("Ok")))
 
                 }

@@ -22,8 +22,9 @@ struct EditProfileView: View {
     @State var done = false
     @State var imagedata : Data = .init(count: 0)
     @Environment(\.presentationMode) var presentationMode
+    @State private var showingAlert = false
     //to show fields during typing
-    
+    @State var value: CGFloat = 0
     
     func CreateUserDB (username: String, name:String, surname:String, imagedata: Data) {
         let db = Firestore.firestore()
@@ -114,11 +115,13 @@ struct EditProfileView: View {
                 .padding(.top, 30.0)
             
             Button(action: {self.picker.toggle() }) {
-                if self.imagedata.count == 0{
+                if self.imagedata.count == 0 {
                     Image(systemName: "person.crop.circle.badge.plus").resizable().frame(width: 150, height: 120).foregroundColor(.gray)
-                }
-                else{
+                    
+                } else {
+                    
                     Image(uiImage: UIImage(data: self.imagedata)!).resizable().renderingMode(.original).frame(width: 100, height: 150).clipShape(Circle())
+                    
                 }
             }.padding(30)
             
@@ -137,11 +140,21 @@ struct EditProfileView: View {
                     .font(.system(size: 20))
                     .padding(8)
                     .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
+                
             }
-            
+
             Spacer()
             
-            Button(action: upload){
+            Button (action: {
+                
+                if (!self.username.isEmpty && !self.name.isEmpty && !self.surname.isEmpty) {
+                    self.upload()
+                } else {
+                    self.showingAlert = true
+                }
+                
+            }) {
+                
                 Text("Save")
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .frame(height: 50)
@@ -149,7 +162,12 @@ struct EditProfileView: View {
                     .font(.system(size: 16, weight: .bold))
                     .background(Color.black)
                     .cornerRadius(20)
-            }.disabled(username.isEmpty || name.isEmpty || surname.isEmpty)
+                
+            }
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("WRONG!"), message: Text("You have to complete all the infos required to update your profile"), dismissButton: .default(Text("Got it!")))
+            }
+            //.disabled(username.isEmpty || name.isEmpty || surname.isEmpty)
             
             if (error != "") {
                 Text(error)
@@ -159,10 +177,27 @@ struct EditProfileView: View {
             }
             
             Spacer()
-        }.padding(.horizontal, 32)
+        }
+            .padding(.horizontal, 32)
             .sheet(isPresented: self.$picker, content: {
                 ImagePicker(picker: self.$picker, imagedata: self.$imagedata)
             })
+            .offset(y: -self.value)
+            .animation(.spring())
+            .onAppear {
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { (noti) in
+                    let value = noti.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+                    let height = value.height
+                    
+                    self.value = height
+                }
+                
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { (noti) in
+                    
+                    self.value = 0
+                }
+            }
+            
     }
 }
 
