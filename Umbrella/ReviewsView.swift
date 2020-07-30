@@ -112,7 +112,8 @@ struct Home : View {
                                              .foregroundColor(.black)
                                         }
                                         .disabled(self.session.session?.email == nil)
-                                        
+                                        //.disabled(self.session.session == nil)
+
                                         
                                         if self.remove{
                                             

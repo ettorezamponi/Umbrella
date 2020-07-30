@@ -81,8 +81,7 @@ struct Reservation : View {
                 }
                 ZStack{
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.blue, lineWidth: 1)
-                        .opacity(0.5)
+                        .stroke(Color.blue, lineWidth: 2)
                         .frame(width: 330, height: 60)
                         .padding(.bottom, 70)
                         .padding(.horizontal, 20)
@@ -139,7 +138,7 @@ struct ChairViewTry: View {
         VStack{
             
             Button (action: {
-                if (self.session.session?.email == nil) {
+                if (self.session.session == nil) {
                     
                     self.alertItem = AlertItem(title: Text("Account missing"), message: Text("You need to log in or sign in to book your umbrella"), dismissButton:.cancel(Text("Ok")))
                 

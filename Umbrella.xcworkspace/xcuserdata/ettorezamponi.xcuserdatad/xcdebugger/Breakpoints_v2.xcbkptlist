@@ -62,8 +62,8 @@
             filePath = "Umbrella/ReservationView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
             landmarkName = "init()"
             landmarkType = "7">
          </BreakpointContent>

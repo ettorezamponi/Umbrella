@@ -30,33 +30,36 @@ struct HomeView: View {
         
             VStack {
                 
-                if (session.session?.email == nil) {
+                if (session.session == nil) {
+                    
                     HStack(alignment: .center) {
+                        
                         Image(systemName: Constants.accountImageAbsent)
                             .padding(.leading)
-                            .frame(width: 40, height: 40)
+                            .frame(width: 60, height: 120)
                             .font(.system(size: 50))
                             .foregroundColor(.white)
 
-                        Text ("Accedi o registrati nella sezione account per avere tutte le funzionalità di questa app")
+                        Text ("Log in or sign in to use all functionalities of this app")
                             .font(.system(size: 25))
                             .fontWeight(.bold)
                             .frame(width:285, height: 140)
                             .foregroundColor(.white)
                         
                     }
-                     .background(Color(red: 0.95, green: 0.37, blue: 0.37))
+                     .background(Color(red: 0.90, green: 0.18, blue: 0.15))
                      .cornerRadius(30)
                      .frame(width: 60)
                     
                 } else if (url != "") {
+                    
                     HStack(alignment: .center) {
                         AnimatedImage(url: URL(string: url)).resizable()
-                            .frame(width: 100, height: 120)
+                            .frame(width: 90, height: 120)
                             .clipShape(Circle())
                             .padding(.leading)
                         
-                        Text ("Bentornato, \(username)")
+                        Text ("Welcome back, \(username)")
                             .font(.system(size: 22))
                             .fontWeight(.bold)
                             .frame(width:245, height: 140)
@@ -72,10 +75,10 @@ struct HomeView: View {
                     HStack(alignment: .center) {
                         
                         Image(systemName: Constants.accountImageAbsent)
-                        .padding(.leading)
-                        .frame(width: 50, height: 50)
-                        .font(.system(size: 50))
-                        .foregroundColor(.white)
+                            .padding(.leading)
+                            .frame(width: 65, height: 50)
+                            .font(.system(size: 50))
+                            .foregroundColor(.white)
                         
                         Text ("Tell us more about you in the account section")
                             .font(.system(size: 25))
@@ -131,7 +134,8 @@ struct HomeView: View {
                             Text ("\(receipe)")
                             .font(.headline)
                             .font(.system(size: 45))
-                            .frame(width:170, height:340)
+                            .frame(width:140, height:340)
+                            .padding(.horizontal)
                             .foregroundColor(.white)
                             
                         } else {
