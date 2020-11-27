@@ -73,7 +73,7 @@ struct Reservation : View {
                                     ChairViewTry(umbrella: i)
                                 }
                             }
-                        }
+                        }.padding(.top, 100)
                         .gridStyle(StaggeredGridStyle(tracks: 5, spacing: 15))
                         
                     }

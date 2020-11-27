@@ -96,7 +96,7 @@ struct HomeView: View {
                     VStack{
                         VStack{
                             GeometryReader { gr in
-                                CurrentWeather(weather: self.weather.current, height: self.selected == 0 ? gr.size.height: gr.size.height * 0.50).animation(.easeInOut(duration: 0.5))
+                                CurrentWeather(weather: self.weather.current, height: self.selected == 0 ? gr.size.height: gr.size.height * 0.55).animation(.easeInOut(duration: 0.5))
                             }
     //                        VStack {
     //                            Picker ("", selection: $selected) {
@@ -119,7 +119,7 @@ struct HomeView: View {
     //                            .font(.headline)
     //                            .frame(width:175, height:125)
                         }.cornerRadius(30)
-                    }.padding(.horizontal, 8)
+                    }.padding(.horizontal, 7)
                      //.padding(.vertical, 6)
                     
                     VStack {
@@ -149,7 +149,7 @@ struct HomeView: View {
                     }
                      .background(Color(red: 0.45, green: 0.70, blue: 0.60))
                      .cornerRadius(30)
-                     .padding(.horizontal, 10)
+                     .padding(.horizontal, 7)
                     
                     
                 }.padding(.bottom, 30)

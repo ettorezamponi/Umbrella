@@ -226,17 +226,17 @@ struct LoginView: View {
 
                 Spacer()
                 
-                HStack(alignment: .center) {
-                    Text("Sign up with Apple")
-                        .frame(width: 310, height: 60)
-                        .foregroundColor(.black)
-                        .font(.system(size: 16, weight: .bold))
-                        .background(Color.white)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.black, lineWidth: 1))
-                    
-                }.padding(15)
+//                HStack(alignment: .center) {
+//                    Text("Sign up with Apple")
+//                        .frame(width: 310, height: 60)
+//                        .foregroundColor(.black)
+//                        .font(.system(size: 16, weight: .bold))
+//                        .background(Color.white)
+//                        .overlay(
+//                            RoundedRectangle(cornerRadius: 20)
+//                                .stroke(Color.black, lineWidth: 1))
+//                    
+//                }.padding(15)
                 
                 google()
                     .frame(width: 310, height: 60)
@@ -382,6 +382,9 @@ struct ImagePicker : UIViewControllerRepresentable {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView().environmentObject(SessionStore())
+        Group {
+            LoginView().environmentObject(SessionStore())
+            LoginView().environmentObject(SessionStore())
+        }
     }
 }

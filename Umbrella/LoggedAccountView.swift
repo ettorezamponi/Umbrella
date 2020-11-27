@@ -57,7 +57,7 @@ struct LoggedAccountView: View {
                         EditProfileView()
                     }).foregroundColor(Color.blue)
                 }
-            .padding(.top, 50)
+            .padding(.top, 20)
             .onAppear(){
                 let uid = Auth.auth().currentUser?.uid
                 let storage = Storage.storage().reference()
@@ -86,20 +86,20 @@ struct LoggedAccountView: View {
             
             VStack{
                 VStack{
-                    
                     Text ("Booking")
                         .font(.system(size: 22))
                         .fontWeight(.semibold)
                         .padding(.leading)
+                        .frame(height: 50)
                         .foregroundColor(.white)
                     
-                    Text("Prenotazione dal 12/7 al 16/7")
+                    Text("Ombrellone prenotato in seconda fila il 12/7")
                         .font(.system(size: 15))
                         .foregroundColor(.white)
                     
                 }
                 .frame(width:360, height: 80)
-                .padding(.bottom, 15)
+                .padding(.bottom, 25)
                 .background(Color(red: 0.26, green: 0.47, blue: 0.59))
                 .cornerRadius(20)
                 
@@ -110,13 +110,14 @@ struct LoggedAccountView: View {
                     Text("Reviews")
                         .font(.system(size: 22))
                         .fontWeight(.semibold)
-                        .frame(height: 85)
+                        .frame(height: 50)
                         .foregroundColor(.white)
                     
                     Text("Stabilimento molto pulito e tenuto maniacalmente. Un paradiso per i bagnanti. Tornerò presto a trovarvi, servizio super gentile ed educato")
                         .font(.system(size: 15))
                         .padding(.bottom, 15)
                         .foregroundColor(.white)
+                        .frame(width: 350, alignment: .center)
                     
                     Divider()
                     
@@ -124,10 +125,11 @@ struct LoggedAccountView: View {
                         .font(.system(size: 15))
                         .padding(.top, 15)
                         .foregroundColor(.white)
+                        .frame(width: 350, alignment: .center)
                     
                 }
-                .frame(width:365, height: 280)
-                .padding(.bottom, 5)
+                .frame(width:360, height: 260)
+                .padding(.bottom, 60)
                 .padding(.horizontal, 2)
                 .background(Color(red: 0.94, green: 0.80, blue: 0.55))
                 .cornerRadius(20)
