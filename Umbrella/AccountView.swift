@@ -10,7 +10,8 @@ import SwiftUI
 
 struct AccountView: View {
     @EnvironmentObject var session: SessionStore
-    
+    @Environment(\.colorScheme) var colorScheme
+
     func getUser() {
         session.listen()
     }
