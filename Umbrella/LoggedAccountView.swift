@@ -13,6 +13,7 @@ import SDWebImageSwiftUI
 
 struct LoggedAccountView: View {
     @EnvironmentObject var session: SessionStore
+    @Environment(\.colorScheme) var colorScheme
     @State var isModal: Bool = false
     @State var url = ""
     @State var username = ""
@@ -128,7 +129,7 @@ struct LoggedAccountView: View {
                         .frame(width: 350, alignment: .center)
                     
                 }
-                .frame(width:360, height: 260)
+                .frame(width:360, height: 240)
                 .padding(.bottom, 60)
                 .padding(.horizontal, 2)
                 .background(Color(red: 0.94, green: 0.80, blue: 0.55))
@@ -141,8 +142,9 @@ struct LoggedAccountView: View {
             Button(action: session.signOut) {
                 Text("Sign Out")
                     .frame(width: 310, height: 55)
-                    .font(.system(size: 16, weight: .bold))
-                    .background(Color.white)
+                    .font(.system(size: 19, weight: .bold))
+                    .background(colorScheme == .light ? Color.white : .black)
+                    .foregroundColor(colorScheme == .light ? Color.black : .red)
                     .cornerRadius(20)
                     .overlay(
                         RoundedRectangle(cornerRadius: 20)
