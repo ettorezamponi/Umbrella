@@ -14,30 +14,34 @@ struct CurrentWeather: View {
     
     var body: some View {
         
-        VStack(alignment: .center, spacing: 20) {
+        VStack(alignment: .center, spacing: 18) {
             Text("Today in \(weather?.name ?? "Unkown")")
                 .font(.title)
                 .foregroundColor(.white)
                 .bold()
                 .frame(width: 135)
+                .multilineTextAlignment(.center)
             
             HStack {
                 
-                Text("\(weather?.main.temp.round ?? 0)")
+                Text("\(weather?.main.temp.round ?? 0)°")
                     .foregroundColor(.white)
                     .fontWeight(Font.Weight.heavy)
                     .font(.system(size: 24))
+                    .multilineTextAlignment(.center)
             }
             Text("\(weather?.weather.last?.description ?? "unkown")")
                 .foregroundColor(.white)
                 .font(.body)
                 .underline()
+                .multilineTextAlignment(.center)
             
 //            Text("\(weather?.main.tempMax.round ?? 0)")
 //                .foregroundColor(.white)
 //                .font(.body)
             
-        }.frame(width: height, height: height)
+//teoricamente "width: width" ma con un valore il testo viene centrato meglio
+        }.frame(width: 183, height: height)
             .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .topLeading, endPoint: .bottomTrailing))
     }
 }
