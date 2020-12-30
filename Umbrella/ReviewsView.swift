@@ -30,6 +30,7 @@ struct Home : View {
     @State var docID = ""
     @State var remove = false
     @EnvironmentObject var session: SessionStore
+    @Environment(\.colorScheme) var colorScheme
     
     var body : some View{
         
@@ -109,7 +110,7 @@ struct Home : View {
                                                 Divider()
                                                 
                                             }.padding(10)
-                                             .foregroundColor(.black)
+                                             .foregroundColor(colorScheme == .light ? Color.black : .white)
                                         }
                                         .disabled(self.session.session?.email == nil)
                                         //.disabled(self.session.session == nil)
