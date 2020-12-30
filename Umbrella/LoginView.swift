@@ -80,6 +80,7 @@ struct SignUpView: View {
     @State var password: String = ""
     @State var error: String = ""
     @EnvironmentObject var session: SessionStore
+    @Environment(\.colorScheme) var colorScheme
     //per i dati inseriti nel DB
     @State var alert = false
     @State var picker = false
@@ -182,9 +183,9 @@ struct SignUpView: View {
                 Text("Create Account")
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .frame(height: 50)
-                    .foregroundColor(.white)
+                    .foregroundColor(colorScheme == .light ? Color.white : .black)
                     .font(.system(size: 16, weight: .bold))
-                    .background(Color.black)
+                    .background(colorScheme == .light ? Color.black : .white)
                     .cornerRadius(20)
             }.disabled(email.isEmpty || password.isEmpty)
             
@@ -219,6 +220,8 @@ struct ChoseMethodView: View {
 
 //View
 struct LoginView: View {
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         NavigationView {
             
@@ -259,9 +262,9 @@ struct LoginView: View {
                     HStack {
                         Text("Create a new account")
                             .frame(width: 310, height: 55)
-                            .foregroundColor(.white)
+                            .foregroundColor(colorScheme == .light ? Color.white : .black)
                             .font(.system(size: 16, weight: .bold))
-                            .background(Color.black)
+                            .background(colorScheme == .light ? Color.black : .white)
                             .cornerRadius(20)
                     }
                 }.padding(5)
