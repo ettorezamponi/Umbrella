@@ -12,6 +12,7 @@ import FirebaseStorage
 
 struct EditProfileView: View {
     @EnvironmentObject var session: SessionStore
+    @Environment(\.colorScheme) var colorScheme
     @State var error: String = ""
     @State var username: String = ""
     @State var name: String = ""
@@ -110,7 +111,7 @@ struct EditProfileView: View {
     var body: some View {
         VStack{
             Text("Modify your info")
-                .font(.system(size: 40, weight: .heavy))
+                .font(.system(size: 35, weight: .heavy))
                 .multilineTextAlignment(.center)
                 .padding(.top, 30.0)
             
@@ -129,16 +130,19 @@ struct EditProfileView: View {
                 TextField("Username", text: $username)
                     .font(.system(size: 20))
                     .padding(8)
+                    .foregroundColor(colorScheme == .light ? Color.black : .white)
                     .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
                 
                 TextField("Name", text: $name)
                     .font(.system(size: 20))
                     .padding(8)
+                    .foregroundColor(colorScheme == .light ? Color.black : .white)
                     .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
                 
                 TextField("Surname", text: $surname)
                     .font(.system(size: 20))
                     .padding(8)
+                    .foregroundColor(colorScheme == .light ? Color.black : .white)
                     .background(RoundedRectangle(cornerRadius: 8).strokeBorder(Color.gray, lineWidth: 1))
                 
             }
@@ -158,9 +162,9 @@ struct EditProfileView: View {
                 Text("Save")
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .frame(height: 50)
-                    .foregroundColor(.white)
+                    .foregroundColor(colorScheme == .light ? .white : .black)
                     .font(.system(size: 16, weight: .bold))
-                    .background(Color.black)
+                    .background(colorScheme == .light ? Color.black : .gray)
                     .cornerRadius(20)
                 
             }
