@@ -39,7 +39,7 @@ struct ContentView: View {
                 Image(systemName: Constants.TabBarImage.tabBar3)
                 Text("\(Constants.TabBarText.tabBar3)")
             }).tag(3)
-        }.accentColor(Color.black)
+        }.accentColor(Color.blue)
     }
 }
 
