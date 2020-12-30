@@ -81,7 +81,7 @@ struct Reservation : View {
                 }
                 ZStack{
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.blue, lineWidth: 2)
+                        .stroke(Color.gray, style: StrokeStyle(lineWidth: 2, dash: [5]))
                         .frame(width: 330, height: 60)
                         .padding(.bottom, 70)
                         .padding(.horizontal, 20)
@@ -102,8 +102,6 @@ struct Reservation : View {
     }
     
 }
-
-
 
 
 struct ChairViewTry: View {
