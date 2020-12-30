@@ -47,8 +47,8 @@ struct HomeView: View {
                             .foregroundColor(.white)
                         
                     }
-                     .background(Color(red: 0.90, green: 0.18, blue: 0.15))
-                     .cornerRadius(30)
+                     .background(Color(red: 0.98, green: 0.25, blue: 0.33))
+                     .cornerRadius(20)
                      .frame(width: 60)
                     
                 } else if (url != "") {
@@ -67,7 +67,7 @@ struct HomeView: View {
 
                         
                     }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
-                     .cornerRadius(30)
+                     .cornerRadius(20)
                      .frame(width: 50)
                     
                 } else {
@@ -87,7 +87,7 @@ struct HomeView: View {
                             .foregroundColor(.white)
 
                     }.background(Color(red: 0.63, green: 0.81, blue: 0.96))
-                     .cornerRadius(30)
+                     .cornerRadius(20)
                      .frame(width: 50)
                 }
                 
@@ -106,19 +106,25 @@ struct HomeView: View {
     //                                .tag(1)
     //                            }.pickerStyle(SegmentedPickerStyle()).padding(.horizontal)
     //                        }
-                        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity).cornerRadius(30)
+                        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                         .cornerRadius(20)
                         
                         VStack{
-                            Maps()
-    //                        Image(systemName: Constants.positionImage)
-    //                            .padding(.top, 30.0)
-    //                            .frame(width: 60, height: 60)
-    //                            .font(.system(size: 50))
-    //
-    //                        Text ("ecco le indicazioni!")
-    //                            .font(.headline)
-    //                            .frame(width:175, height:125)
-                        }.cornerRadius(30)
+                            Button(action: {
+                                let directionsURL = "http://maps.apple.com/?saddr=Current%20Location&daddr=Ancona"
+                                guard let url = URL(string: directionsURL) else {
+                                    return
+                                }
+                                if #available(iOS 10.0, *) {
+                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                } else {
+                                    UIApplication.shared.openURL(url)
+                                }
+                            }) {
+                                Maps()
+                            }
+                        }.cornerRadius(20)
+                        
                     }.padding(.horizontal, 7)
                      //.padding(.vertical, 6)
                     
@@ -133,7 +139,7 @@ struct HomeView: View {
                             
                             Text ("\(receipe)")
                             .font(.headline)
-                            .font(.system(size: 45))
+                            .font(.system(size: 60))
                             .frame(width:140, height:340)
                             .padding(.horizontal)
                             .foregroundColor(.white)
@@ -147,8 +153,8 @@ struct HomeView: View {
                             
                         }
                     }
-                     .background(Color(red: 0.45, green: 0.70, blue: 0.60))
-                     .cornerRadius(30)
+                     .background(Color(red: 0.45, green: 0.80, blue: 0.60))
+                     .cornerRadius(20)
                      .padding(.horizontal, 7)
                     
                     
