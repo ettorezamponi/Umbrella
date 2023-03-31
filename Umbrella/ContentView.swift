@@ -11,6 +11,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var selectedSeats: [Seat] = []
     
+    //test for GIT, da eliminare
+    
     init() {
         UITabBar.appearance().backgroundColor = UIColor.white
     }
